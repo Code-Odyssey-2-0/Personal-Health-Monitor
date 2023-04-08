@@ -2,7 +2,7 @@ package com.app.personalhealthmonitor.model;
 
 public class User {
     private String name;
-    private String address;
+    private String adresse;
     private String tel;
     private String email;
     private String type;
@@ -11,9 +11,9 @@ public class User {
         //need firebase
     }
 
-    public User(String name, String address, String tel, String email, String type) {
+    public User(String name, String adresse, String tel, String email,String type) {
         this.name = name;
-        this.address = address;
+        this.adresse = adresse;
         this.tel = tel;
         this.email = email;
         this.type = type;
@@ -35,12 +35,12 @@ public class User {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAdresse() {
+        return adresse;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
 
     public String getTel() {
