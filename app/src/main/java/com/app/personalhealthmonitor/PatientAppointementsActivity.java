@@ -2,10 +2,13 @@ package com.app.personalhealthmonitor;
 
 import android.os.Bundle;
 
+
 import com.app.personalhealthmonitor.adapter.PatientAppointmentsAdapter;
 import com.app.personalhealthmonitor.adapter.ConfirmedAppointmentsAdapter;
 import com.app.personalhealthmonitor.adapter.PatientAppointmentsAdapter;
-import com.ensias.healthcareapp.model.ApointementInformation;
+import com.app.personalhealthmonitor.adapter.ConfirmedAppointmentsAdapter;
+import com.app.personalhealthmonitor.adapter.PatientAppointmentsAdapter;
+import com.app.personalhealthmonitor.model.ApointementInformation;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
