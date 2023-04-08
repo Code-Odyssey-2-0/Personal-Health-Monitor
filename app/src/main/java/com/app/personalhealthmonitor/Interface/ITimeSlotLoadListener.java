@@ -1,6 +1,6 @@
 package com.app.personalhealthmonitor.Interface;
 
-import com.app.personalhealthmonitor.Model.TimeSlot;
+import com.app.personalhealthmonitor.model.TimeSlot;
 
 import java.util.List;
 
