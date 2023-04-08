@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <item>
         <shape android:shape="oval">
-            <solid android:color="#E0E0E0" />
+            <solid android:color="@color/colorPrimary" />
             <size
                 android:width="48dp"
                 android:height="48dp" />
