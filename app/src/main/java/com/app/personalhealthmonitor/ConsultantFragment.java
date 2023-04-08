@@ -22,7 +22,7 @@ public class ConsultationFragmentPage extends Fragment {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference FicheRef;
-    private ConsultationAdapter adapter;
+    private ConsultationFragmentPage adapter;
     View result;
 
     public ConsultationFragmentPage() {

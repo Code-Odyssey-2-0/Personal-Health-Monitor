@@ -1,4 +1,4 @@
-package com.app.personalhealthmonitor.model;
+package com.app.personalhealthmonitor.Model;
 import com.google.firebase.firestore.ServerTimestamp;
 
 import java.util.Date;
