@@ -2,10 +2,11 @@ package com.app.personalhealthmonitor;
 
 import android.os.Bundle;
 
-import com.ensias.healthcareapp.adapter.ConfirmedAppointmentsAdapter;
-import com.ensias.healthcareapp.adapter.MyDoctorsAdapter;
-import com.ensias.healthcareapp.model.ApointementInformation;
-import com.ensias.healthcareapp.model.Doctor;
+import com.app.personalhealthmonitor.adapter.DoctoreAdapter;
+import com.app.personalhealthmonitor.adapter.MyDoctorsAdapter;
+import com.app.personalhealthmonitor.adapter.PatRequestAdapter;
+import com.app.personalhealthmonitor.model.Doctor;
+import com.app.personalhealthmonitor.model.Request;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
@@ -13,35 +14,36 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ConfirmedAppointmentsActivity extends AppCompatActivity {
+public class MyDoctorsAvtivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference myDoctorsRef = db.collection("Doctor");
-    private ConfirmedAppointments adapter;
+    private CollectionReference myDoctorsRef = db.collection("Patient");
+    private MyDoctorsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirmed_appointements);
+        setContentView(R.layout.activity_my_doctors);
 
         setUpRecyclerView();
     }
 
     public void setUpRecyclerView(){
         //Get the doctors by patient id
-        final String doctorID = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
-        Query query = myDoctorsRef.document(""+doctorID+"")
-                .collection("calendar").orderBy("time", Query.Direction.DESCENDING);
+        final String patientID = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
+        Query query = myDoctorsRef.document(""+patientID+"")
+                .collection("MyDoctors").orderBy("name", Query.Direction.DESCENDING);
 
-        FirestoreRecyclerOptions<AppointmentInfo> options = new FirestoreRecyclerOptions.Builder<AppointmentInfoAppointmentInfo>()
-                .setQuery(query, AppointmentInfo.class)
+        FirestoreRecyclerOptions<Doctor> options = new FirestoreRecyclerOptions.Builder<Doctor>()
+                .setQuery(query, Doctor.class)
                 .build();
 
-        adapter = new ConfirmedAppointments(options);
-        //List current appointments
-        RecyclerView recyclerView = findViewById(R.id.confirmed_appointements_list);
+        adapter = new MyDoctorsAdapter(options);
+        //ListMyDoctors
+        RecyclerView recyclerView = findViewById(R.id.ListMyDoctors);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);

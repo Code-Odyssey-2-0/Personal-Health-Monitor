@@ -1,4 +1,4 @@
-package com.ensias.healthcareapp;
+package com.app.personalhealthmonitor;
 
 import android.os.Bundle;
 
@@ -10,27 +10,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ensias.healthcareapp.adapter.ConsultationAdapter;
-import com.ensias.healthcareapp.model.Fiche;
+import com.app.personalhealthmonitor.adapter.ConsultationAdapter;
+import com.app.personalhealthmonitor.adapter.HospitalisationAdapter;
+import com.app.personalhealthmonitor.model.Fiche;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-public class ConsultationFragmentPage extends Fragment {
+public class Hospitalisation extends Fragment {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference FicheRef;
-    private ConsultationFragmentPage adapter;
+    private HospitalisationAdapter adapter;
     View result;
 
-    public ConsultationFragmentPage() {
+
+    public Hospitalisation() {
         // Required empty public constructor
     }
 
-    public static ConsultationFragmentPage newInstance() {
-        ConsultationFragmentPage fragment = new ConsultationFragmentPage();
+
+    public static Hospitalisation newInstance() {
+        Hospitalisation fragment = new Hospitalisation();
         return fragment;
     }
 
@@ -38,25 +41,22 @@ public class ConsultationFragmentPage extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        result = inflater.inflate(R.layout.fragment_consultation_page, container, false);
+        result = inflater.inflate(R.layout.fragment_hospitalisation, container, false);
         setUpRecyclerView();
         return result;
     }
-
     private void setUpRecyclerView() {
-
         String email_id = getActivity().getIntent().getExtras().getString("patient_email");
         FicheRef = db.collection("Patient").document(email_id).collection("MyMedicalFolder");
-        Query query = FicheRef.whereEqualTo("type", "Consultation");
+        Query query = FicheRef.whereEqualTo("type", "Hospitalisation");
 
         FirestoreRecyclerOptions<Fiche> options = new FirestoreRecyclerOptions.Builder<Fiche>()
                 .setQuery(query, Fiche.class)
                 .build();
 
-        adapter = new ConsultationAdapter(options);
+        adapter = new HospitalisationAdapter(options);
 
-        RecyclerView recyclerView = result.findViewById(R.id.conslutationRecycleView);
+        RecyclerView recyclerView = result.findViewById(R.id.hospitalisationRecycleView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.setAdapter(adapter);

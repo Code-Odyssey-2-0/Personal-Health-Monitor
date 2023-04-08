@@ -1,4 +1,4 @@
-package com.ensias.healthcareapp;
+package com.app.personalhealthmonitor;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,8 +16,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ensias.healthcareapp.Common.Common;
-import com.ensias.healthcareapp.adapter.ConsultationFragmentAdapter;
+import com.app.personalhealthmonitor.Common.Common;
+import com.app.personalhealthmonitor.adapter.ConsultationFragmentAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
