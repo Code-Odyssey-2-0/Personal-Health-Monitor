@@ -12,6 +12,11 @@ import android.view.ViewGroup;
 
 import com.app.personalhealthmonitor.adapter.ConsultationAdapter;
 import com.app.personalhealthmonitor.model.Fiche;
+<<<<<<< HEAD
+=======
+import com.ensias.healthcareapp.adapter.ConsultationAdapter;
+import com.ensias.healthcareapp.model.Fiche;
+>>>>>>> master
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
