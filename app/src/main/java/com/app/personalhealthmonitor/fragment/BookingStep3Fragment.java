@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import com.app.personalhealthmonitor.Common.Common;
 import com.app.personalhealthmonitor.R;
-import com.ensias.healthcareapp.model.ApointementInformation;
+import com.app.personalhealthmonitor.model.ApointementInformation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
