@@ -171,7 +171,7 @@ public class TestActivity extends AppCompatActivity {
         List<String> stepList = new ArrayList<>();
         stepList.add("Purpose");
         stepList.add("Tme and Date");
-        stepList.add("finish");
+        stepList.add("Finish");
         stepView.setSteps(stepList);
 
     }

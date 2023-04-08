@@ -28,17 +28,15 @@ public class PatientAppointementsActivity extends AppCompatActivity {
     }
 
     public void setUpRecyclerView(){
-        //Get the doctors by patient id
         final String doctorID = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
         Query query = myDoctorsRef.document(""+doctorID+"")
-                .collection("calendar").orderBy("time", Query.Direction.DESCENDING);
+                .collection("Calendar").orderBy("Time", Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<ApointementInformation> options = new FirestoreRecyclerOptions.Builder<ApointementInformation>()
                 .setQuery(query, ApointementInformation.class)
                 .build();
 
         adapter = new PatientAppointmentsAdapter(options);
-        //List current appointments
         RecyclerView recyclerView = findViewById(R.id.patient_appointements);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
