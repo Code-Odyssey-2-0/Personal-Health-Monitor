@@ -16,8 +16,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ensias.healthcareapp.Common.Common;
-import com.ensias.healthcareapp.model.Doctor;
+import com.app.personalhealthmonitor.Common.Common;
+import com.app.personalhealthmonitor.model.Doctor;
+import com.app.personalhealthmonitor.Common.Common;
+import com.app.personalhealthmonitor.model.Doctor;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
@@ -107,7 +109,7 @@ public class DoctorAdapterFiltred  extends RecyclerView.Adapter<DoctorAdapterFil
             @Override
             public void onClick(View v) {
                 doc= doctor.getEmail();
-                Common.CurreentDoctor = doctor.getEmail();
+                Common.CurrentDoctor = doctor.getEmail();
                 Common.CurrentDoctorName = doctor.getName();
                 Common.CurrentPhone = doctor.getTel();
                 openPage(v.getContext());

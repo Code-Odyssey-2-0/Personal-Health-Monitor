@@ -3,6 +3,7 @@ package com.app.personalhealthmonitor;
 import android.app.Activity;
 import android.os.Bundle;
 
+import com.app.personalhealthmonitor.adapter.ConfirmedAppointmentsAdapter;
 import com.ensias.healthcareapp.adapter.ConfirmedAppointmentsAdapter;
 import com.ensias.healthcareapp.adapter.MyDoctorsAdapter;
 import com.ensias.healthcareapp.model.ApointementInformation;
