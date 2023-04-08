@@ -1,0 +1,108 @@
+Index: app/src/main/java/com/app/personalhealthmonitor/adpater/ConfirmedAppointment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/app/personalhealthmonitor/adpater/ConfirmedAppointment.java b/app/src/main/java/com/app/personalhealthmonitor/adpater/ConfirmedAppointment.java
+new file mode 100644
+--- /dev/null	
++++ b/app/src/main/java/com/app/personalhealthmonitor/adpater/ConfirmedAppointment.java	
+@@ -0,0 +1,79 @@
++package com.app.personalhealthmonitor.adpater;
++
++import android.net.Uri;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.Button;
++import android.widget.ImageView;
++import android.widget.TextView;
++
++import com.app.personalhealthmonitor.R;
++import com.app.personalhealthmonitor.model.ApointementInformation;
++import com.app.personalhealthmonitor.model.Doctor;
++import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
++import com.firebase.ui.firestore.FirestoreRecyclerOptions;
++import com.google.android.gms.tasks.OnFailureListener;
++import com.google.android.gms.tasks.OnSuccessListener;
++import com.google.firebase.auth.FirebaseAuth;
++import com.google.firebase.storage.FirebaseStorage;
++import com.google.firebase.storage.StorageReference;
++import com.squareup.picasso.Picasso;
++
++import androidx.annotation.NonNull;
++import androidx.recyclerview.widget.RecyclerView;
++public class ConfirmedAppointment  extends FirestoreRecyclerAdapter<AppointmentInfo, ConfirmedAppointment.ConfirmedAppointmentsHolder> {
++        StorageReference pathReference ;
++public ConfirmedAppointment(@NonNull FirestoreRecyclerOptions<AppointmentInfo> options) {
++        super(options);
++        }
++@Override
++protected void onBindViewHolder(@NonNull ConfirmedAppointmentsHolder confirmedAppointmentsHolder, int position, @NonNull final AppointmentInfo AppointmentInfo) {
++        confirmedAppointmentsHolder.AppointmentDate.setText(AppointmentInfo.getTime());
++        confirmedAppointmentsHolder.PatientName.setText(AppointmentInfo.getPatientName());
++        confirmedAppointmentsHolder.AppointmentType.setText(AppointmentInfo.getAppointmentType());
++
++        String imageId = AppointmentInfo.getPatientId()+".jpg"; //add a title image
++        pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/"+ imageId); //store the image
++        pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
++@Override
++public void onSuccess(Uri uri) {
++        Picasso.with(confirmedAppointmentsHolder.PatientImage.getContext())
++        .load(uri)
++        .placeholder(R.mipmap.ic_launcher)
++        .fit()
++        .centerCrop()
++        .into(confirmedAppointmentsHolder.PatientImage);//Image location
++
++        // profileImage.setImageURI(uri);
++        }
++        }).addOnFailureListener(new OnFailureListener() {
++@Override
++public void onFailure(@NonNull Exception exception) {
++        // Handle any errors
++        }
++        });
++
++        }
++
++@NonNull
++@Override
++public ConfirmedAppointment.ConfirmedAppointmentsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
++        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.confirmed_appointements_item, parent, false);
++        return new ConfirmedAppointment.ConfirmedAppointmentsHolder(v);
++        }
++
++class ConfirmedAppointmentsHolder extends RecyclerView.ViewHolder{
++    TextView AppointmentDate;
++    TextView PatientName;
++    TextView AppointmentType;
++    ImageView PatientImage;
++    public ConfirmedAppointmentsHolder(@NonNull View itemView) {
++        super(itemView);
++        AppointmentDate = itemView.findViewById(R.id.appointement_date);
++        PatientName = itemView.findViewById(R.id.patient_name);
++        AppointmentType = itemView.findViewById(R.id.appointement_type);
++        PatientImage = itemView.findViewById(R.id.patient_image);
++    }
++}
++}
+Index: app/src/main/java/com/app/personalhealthmonitor/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.app.personalhealthmonitor;\r\n\r\nimport android.os.Bundle;\r\nimport com.google.android.material.snackbar.Snackbar;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport android.view.View;\r\nimport androidx.navigation.NavController;\r\nimport androidx.navigation.Navigation;\r\nimport androidx.navigation.ui.AppBarConfiguration;\r\nimport androidx.navigation.ui.NavigationUI;\r\nimport com.app.personalhealthmonitor.databinding.ActivityMainBinding;\r\n\r\nimport android.view.Menu;\r\nimport android.view.MenuItem;\r\n\r\npublic class MainActivity extends AppCompatActivity {\r\n\r\n    private AppBarConfiguration appBarConfiguration;\r\n    private ActivityMainBinding binding;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n\r\n        binding = ActivityMainBinding.inflate(getLayoutInflater());\r\n        setContentView(binding.getRoot());\r\n\r\n        setSupportActionBar(binding.toolbar);\r\n\r\n        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);\r\n        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();\r\n        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);\r\n\r\n        binding.fab.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                Snackbar.make(view, \"Replace with your own action\", Snackbar.LENGTH_LONG)\r\n                        .setAction(\"Action\", null).show();\r\n            }\r\n        });\r\n    }\r\n\r\n    @Override\r\n    public boolean onCreateOptionsMenu(Menu menu) {\r\n        // Inflate the menu; this adds items to the action bar if it is present.\r\n        getMenuInflater().inflate(R.menu.menu_main, menu);\r\n        return true;\r\n    }\r\n\r\n    @Override\r\n    public boolean onOptionsItemSelected(MenuItem item) {\r\n        // Handle action bar item clicks here. The action bar will\r\n        // automatically handle clicks on the Home/Up button, so long\r\n        // as you specify a parent activity in AndroidManifest.xml.\r\n        int id = item.getItemId();\r\n\r\n        //noinspection SimplifiableIfStatement\r\n        if (id == R.id.action_settings) {\r\n            return true;\r\n        }\r\n\r\n        return super.onOptionsItemSelected(item);\r\n    }\r\n\r\n    @Override\r\n    public boolean onSupportNavigateUp() {\r\n        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);\r\n        return NavigationUI.navigateUp(navController, appBarConfiguration)\r\n                || super.onSupportNavigateUp();\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/app/personalhealthmonitor/MainActivity.java b/app/src/main/java/com/app/personalhealthmonitor/MainActivity.java
+--- a/app/src/main/java/com/app/personalhealthmonitor/MainActivity.java	
++++ b/app/src/main/java/com/app/personalhealthmonitor/MainActivity.java	
+@@ -13,7 +13,7 @@
+ import android.view.Menu;
+ import android.view.MenuItem;
+ 
+-public class MainActivity extends AppCompatActivity {
++public class  MainActivity extends AppCompatActivity {
+ 
+     private AppBarConfiguration appBarConfiguration;
+     private ActivityMainBinding binding;
