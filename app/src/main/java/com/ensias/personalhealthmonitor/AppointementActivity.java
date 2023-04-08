@@ -18,7 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class AppointementActivity extends AppCompatActivity {
 
     private LinearLayout lis;
-    //final List<String> fruits_list = new ArrayList<String>(Arrays.asList(fruits));
+
     static FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override

@@ -15,8 +15,8 @@ public class FicheInfo extends AppCompatActivity {
         t2=findViewById(R.id.textView4);
         t3=findViewById(R.id.textView5);
 
-        t1.setText("Date de creation"+getIntent().getStringExtra("dateCreated"));
-        t2.setText(getIntent().getStringExtra("doctor"));
-        t3.setText(getIntent().getStringExtra("description"));
+        t1.setText("Data Created"+getIntent().getStringExtra("dateCreated"));
+        t2.setText(getIntent().getStringExtra("Doctor"));
+        t3.setText(getIntent().getStringExtra("Description"));
     }
 }

@@ -31,14 +31,13 @@ public class MyPatientsActivity extends AppCompatActivity {
 
         final String doctorID = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
         Query query = myPatientsRef.document(""+doctorID+"")
-                .collection("MyPatients").orderBy("name", Query.Direction.DESCENDING);
+                .collection("MyPatients").orderBy("Name", Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<Patient> options = new FirestoreRecyclerOptions.Builder<Patient>()
                 .setQuery(query, Patient.class)
                 .build();
 
         adapter = new MyPatientsAdapter(options);
-        //ListMyPatients
         RecyclerView recyclerView = findViewById(R.id.ListMyPatients);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
