@@ -6,14 +6,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-<<<<<<< HEAD
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.personalhealthmonitor.model.Hour;
-=======
-import com.app.personalhealthmonitor.model.Hour;
-import com.google.android.gms.tasks.OnFailureListener;
->>>>>>> master
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
