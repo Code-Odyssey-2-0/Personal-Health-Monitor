@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                         .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
+                                System.out.println(task);
                                 if (task.isSuccessful()) {
 
                                     Log.d("TAG", "createUserWithEmail:success");
@@ -232,10 +233,13 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
+                            System.out.println("test : 1");
                             UsersRef.document(currentUser.getEmail()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                 @Override
                                 public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                    System.out.println("test : 2 "+ documentSnapshot);
                                     User user=documentSnapshot.toObject(User.class);
+                                    System.out.println("test : 3 "+ user);
                                     if(user.getType().equals("Patient")){
                                         Intent k = new Intent(MainActivity.this, HomeActivity.class);
                                         startActivity(k);
