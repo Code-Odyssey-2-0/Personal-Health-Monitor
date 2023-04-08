@@ -3,6 +3,7 @@ package com.app.personalhealthmonitor;
 import android.app.Activity;
 import android.os.Bundle;
 
+import com.app.personalhealthmonitor.adapter.DoctorAppointementAdapter;
 import com.ensias.healthcareapp.adapter.DoctorAppointementAdapter;
 import com.ensias.healthcareapp.adapter.MyDoctorsAdapter;
 import com.ensias.healthcareapp.model.ApointementInformation;
@@ -39,12 +40,11 @@ public class DoctorAppointementActivity extends Activity {
                 .setQuery(query, ApointementInformation.class)
                 .build();
 
-        adapter = new DoctorAppointementAdapter(options);
-        //ListMyDoctors
+        this.adapter = new DoctorAppointementAdapter(options);
         RecyclerView recyclerView = findViewById(R.id.DoctorAppointement);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(this.adapter);
     }
 
     @Override
