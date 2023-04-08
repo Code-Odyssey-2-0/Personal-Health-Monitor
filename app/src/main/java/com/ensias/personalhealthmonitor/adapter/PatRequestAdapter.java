@@ -66,7 +66,7 @@ public class PatRequestAdapter extends FirestoreRecyclerAdapter<Request, PatRequ
                                         }
                                     }
                                 });
-                                db.document(HourPath).update("choosen","true");
+                                db.document(HourPath).update("Chosen","true");
                                 Snackbar.make(t, "Patient added", Snackbar.LENGTH_SHORT).show();
                                 RequestHolder.addDoc.setVisibility(View.INVISIBLE);
 

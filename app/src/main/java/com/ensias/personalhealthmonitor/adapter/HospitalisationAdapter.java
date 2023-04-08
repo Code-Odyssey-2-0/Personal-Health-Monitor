@@ -44,7 +44,6 @@ public class HospitalisationAdapter  extends FirestoreRecyclerAdapter<Fiche,Hosp
         String[] date ;
         if(model.getDateCreated() != null) {
             date = model.getDateCreated().toString().split(" ");
-            // Thu Jun 04 14:46:12 GMT+01:00 2020
             holder.appointement_day_name.setText(date[0]);
             holder.appointement_day.setText(date[2]);
             holder.appointement_month.setText(date[1]);
