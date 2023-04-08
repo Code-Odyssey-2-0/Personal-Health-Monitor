@@ -74,3 +74,4 @@ public class Hospitalisation extends Fragment {
         adapter.stopListening();
     }
 }
+3e3
