@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.app.personalhealthmonitor.ProfilePatientActivity;
-import com.app.personalhealthmonitor.R;
-import com.app.personalhealthmonitor.model.AppointmentInfo;
+import com.ensias.healthcareapp.ProfilePatientActivity;
+import com.ensias.healthcareapp.R;
+import com.ensias.healthcareapp.model.ApointementInformation;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,25 +36,25 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import dmax.dialog.SpotsDialog;
 
-public class PatientAppointments extends FirestoreRecyclerAdapter<AppointementInfo, PatientAppointments.PatientAppointmentsHolder> {
+public class PatientAppointmentsAdapter extends FirestoreRecyclerAdapter<ApointementInformation, PatientAppointmentsAdapter.PatientAppointmentsHolder> {
     StorageReference pathReference;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DocumentReference docRef;
     DocumentSnapshot documentSnapshot;
     final String doctorID = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
 
-    public PatientAppointments(@NonNull FirestoreRecyclerOptions<AppointementInfo> options) {
+    public PatientAppointmentsAdapter(@NonNull FirestoreRecyclerOptions<ApointementInformation> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull PatientAppointmentsHolder patientAppointmentsHolder, int position, @NonNull final AppointementInfo appointmentInfo) {
-        patientAppointmentsHolder.dateAppointment.setText(appointmentInfo.getTime());
-        patientAppointmentsHolder.patientName.setText(appointmentInfo.getDoctorName());
-        patientAppointmentsHolder.appointmentType.setText(appointmentInfo.getAppointmentType());
-        patientAppointmentsHolder.type.setText(appointmentInfo.getType());
-        String doctorEmail = appointmentInfo.getDoctorId();
-        Log.d("doctor email", doctorEmail);
+    protected void onBindViewHolder(@NonNull PatientAppointmentsHolder patientAppointmentsHolder, int position, @NonNull final ApointementInformation apointementInformation) {
+        patientAppointmentsHolder.dateAppointement.setText(apointementInformation.getTime());
+        patientAppointmentsHolder.patientName.setText(apointementInformation.getDoctorName());
+        patientAppointmentsHolder.appointementType.setText(apointementInformation.getApointementType());
+        patientAppointmentsHolder.type.setText(apointementInformation.getType());
+        String doctorEmail = apointementInformation.getDoctorId();
+        Log.d("docotr email", doctorEmail);
         docRef = db.collection("Doctor").document("" + doctorEmail + "");
         /* Get the doctor's phone number */
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -68,7 +68,7 @@ public class PatientAppointments extends FirestoreRecyclerAdapter<AppointementIn
 
 
         //display profile image
-        String imageId = appointmentInfo.getDoctorId();
+        String imageId = apointementInformation.getDoctorId();
         pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/" + imageId + ".jpg");
         pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
@@ -88,13 +88,13 @@ public class PatientAppointments extends FirestoreRecyclerAdapter<AppointementIn
             }
         });
 
-        if (appointmentInfo.getAppointmentType().equals("Consultation")) {
-            //patientAppointmentsHolder.appointmentType.setBackgroundColor((patientAppointmentsHolder.type.getContext().getResources().getColor(R.color.colorPrimaryDark)));
+        if (apointementInformation.getApointementType().equals("Consultation")) {
+            //patientAppointmentsHolder.appointementType.setBackgroundColor((patientAppointmentsHolder.type.getContext().getResources().getColor(R.color.colorPrimaryDark)));
             patientAppointmentsHolder.appointementType.setBackground(patientAppointmentsHolder.appointementType.getContext().getResources().getDrawable(R.drawable.button_radius_primary_color));
         }
-        if (appointmentInfo.getType().equals("Accepted")) {
+        if (apointementInformation.getType().equals("Accepted")) {
             patientAppointmentsHolder.type.setTextColor(Color.parseColor("#20bf6b"));
-        } else if (appointmentInfo.getType().equals("Checked")) {
+        } else if (apointementInformation.getType().equals("Checked")) {
             patientAppointmentsHolder.type.setTextColor(Color.parseColor("#8854d0"));
         } else {
             patientAppointmentsHolder.type.setTextColor(Color.parseColor("#eb3b5a"));
@@ -105,27 +105,26 @@ public class PatientAppointments extends FirestoreRecyclerAdapter<AppointementIn
     @Override
     public PatientAppointmentsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.patient_appointments_item, parent, false);
-        return new PatientAppointments.PatientAppointmentsHolder(v);
+        return new PatientAppointmentsAdapter.PatientAppointmentsHolder(v);
     }
 
 
     class PatientAppointmentsHolder extends RecyclerView.ViewHolder {
-        TextView dateAppointment;
+        TextView dateAppointement;
         TextView patientName;
-        TextView appointmentType;
+        TextView appointementType;
         TextView type;
         TextView phone;
         ImageView image;
 
         public PatientAppointmentsHolder(@NonNull View itemView) {
             super(itemView);
-            dateAppointment = itemView.findViewById(R.id.appointment_date);
+            dateAppointement = itemView.findViewById(R.id.appointement_date);
             patientName = itemView.findViewById(R.id.patient_name);
-            appointmentType = itemView.findViewById(R.id.appointment_type);
+            appointementType = itemView.findViewById(R.id.appointement_type);
             type = itemView.findViewById(R.id.type);
             phone = itemView.findViewById(R.id.patient_phone);
             image = itemView.findViewById(R.id.patient_image);
         }
     }
 }
-
