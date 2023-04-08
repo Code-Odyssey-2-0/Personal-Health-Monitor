@@ -13,9 +13,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.app.personalhealthmonitor.fireStoreApi.DoctorHelper;
-import com.app.personalhealthmonitor.fireStoreApi.PatientHelper;
-import com.app.personalhealthmonitor.fireStoreApi.UserHelper;
+import com.ensias.healthcareapp.fireStoreApi.DoctorHelper;
+import com.ensias.healthcareapp.fireStoreApi.PatientHelper;
+import com.ensias.healthcareapp.fireStoreApi.UserHelper;
 
 import static android.widget.AdapterView.*;
 
@@ -73,19 +73,19 @@ public class FirstSigninActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String fullname, birtDay, tel, type, speciality;
+                String fullname, birtDay, tel, type, specialite;
                 fullname = fullName.getText().toString();
                 birtDay = birthday.getText().toString();
                 tel = teL.getText().toString();
                 type = spinner.getSelectedItem().toString();
-                speciality = specialiteList.getSelectedItem().toString();
+                specialite = specialiteList.getSelectedItem().toString();
                 UserHelper.addUser(fullname, birtDay, tel, type);
                 if (type.equals("Patient")) {
-                    PatientHelper.addPatient(fullname, "address", tel);
+                    PatientHelper.addPatient(fullname, "adress", tel);
                     System.out.println("Add patient " + fullname + " to patient collection");
 
                 } else {
-                    DoctorHelper.addDoctor(fullname, "address", tel, speciality);
+                    DoctorHelper.addDoctor(fullname, "adress", tel, specialite);
                 }
                 Intent k = new Intent(FirstSigninActivity.this, MainActivity.class);
                 startActivity(k);
