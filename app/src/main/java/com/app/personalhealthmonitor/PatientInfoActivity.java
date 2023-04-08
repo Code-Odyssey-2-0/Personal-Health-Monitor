@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ensias.healthcareapp.Common.Common;
+import com.app.personalhealthmonitor.Common.Common;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -19,7 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 
-import static com.ensias.healthcareapp.Common.Common.convertBloodToInt;
+import static com.app.personalhealthmonitor.Common.Common.convertBloodToInt;
 
 public class PatientInfoActivity extends AppCompatActivity {
 

@@ -13,9 +13,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.ensias.healthcareapp.Common.Common;
-import com.ensias.healthcareapp.Common.NonSwipeViewPager;
-import com.ensias.healthcareapp.adapter.MyViewPagerAdapter;
+import com.app.personalhealthmonitor.Common.Common;
+import com.app.personalhealthmonitor.Common.NonSwipeViewPager;
+import com.app.personalhealthmonitor.adapter.MyViewPagerAdapter;
 import com.shuhart.stepview.StepView;
 
 import java.util.ArrayList;
@@ -24,8 +24,8 @@ import java.util.List;
 
 import butterknife.Unbinder;
 
-import static com.ensias.healthcareapp.Common.Common.step;
-import static com.ensias.healthcareapp.fragment.BookingStep1Fragment.spinner;
+import static com.app.personalhealthmonitor.Common.Common.step;
+import static com.app.personalhealthmonitor.fragment.BookingStep1Fragment.spinner;
 
 public class TestActivity extends AppCompatActivity {
 

@@ -2,8 +2,9 @@ package com.app.personalhealthmonitor;
 
 import android.os.Bundle;
 
-import com.ensias.healthcareapp.adapter.MyPatientsAdapter;
-import com.ensias.healthcareapp.model.Patient;
+import com.app.personalhealthmonitor.adapter.MyPatientsAdapter;
+import com.app.personalhealthmonitor.adapter.MyPatientsAdapter;
+import com.app.personalhealthmonitor.model.Patient;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;

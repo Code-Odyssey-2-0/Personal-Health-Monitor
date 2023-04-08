@@ -18,8 +18,8 @@ import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
 
-import com.ensias.healthcareapp.adapter.DoctoreAdapter;
-import com.ensias.healthcareapp.model.Doctor;
+import com.app.personalhealthmonitor.adapter.DoctoreAdapter;
+import com.app.personalhealthmonitor.model.Doctor;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

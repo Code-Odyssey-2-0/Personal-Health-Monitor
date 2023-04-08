@@ -8,10 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.ensias.healthcareapp.adapter.DoctoreAdapter;
-import com.ensias.healthcareapp.adapter.PatRequestAdapter;
-import com.ensias.healthcareapp.model.Doctor;
-import com.ensias.healthcareapp.model.Request;
+import com.app.personalhealthmonitor.adapter.PatRequestAdapter;
+import com.app.personalhealthmonitor.adapter.DoctoreAdapter;
+import com.app.personalhealthmonitor.adapter.PatRequestAdapter;
+import com.app.personalhealthmonitor.model.Doctor;
+import com.app.personalhealthmonitor.model.Request;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
