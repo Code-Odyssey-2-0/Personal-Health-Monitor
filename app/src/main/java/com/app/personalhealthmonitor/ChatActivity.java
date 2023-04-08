@@ -10,11 +10,6 @@ import android.widget.Button;
 
 import com.app.personalhealthmonitor.adapter.MessageAdapter;
 import com.app.personalhealthmonitor.model.Message;
-<<<<<<< HEAD
-=======
-import com.app.personalhealthmonitor.adapter.MessageAdapter;
-import com.app.personalhealthmonitor.model.Message;
->>>>>>> master
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
