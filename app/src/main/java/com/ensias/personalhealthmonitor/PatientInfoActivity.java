@@ -57,9 +57,9 @@ public class PatientInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 HashMap<String,Object> map = new HashMap<>();
-                map.put("height",""+heightBtn.getText());
-                map.put("weight",""+weightBtn.getText());
-                map.put("bloodType",""+specialiteList.getSelectedItem().toString());
+                map.put("Height",""+heightBtn.getText());
+                map.put("Weight",""+weightBtn.getText());
+                map.put("BloodType",""+specialiteList.getSelectedItem().toString());
                 Log.e("tag", "onClick: "+specialiteList.getTag() );
                 FirebaseFirestore.getInstance().collection("Patient").document(patient_email).collection("moreInfo")
                         .document(patient_email).set(map);

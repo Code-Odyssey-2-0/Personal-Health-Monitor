@@ -31,7 +31,7 @@ public class ConfirmedAppointmensActivity extends AppCompatActivity {
         //Get the doctors by patient id
         final String doctorID = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
         Query query = myDoctorsRef.document(""+doctorID+"")
-                .collection("calendar").orderBy("time", Query.Direction.DESCENDING);
+                .collection("Calendar").orderBy("Time", Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<ApointementInformation> options = new FirestoreRecyclerOptions.Builder<ApointementInformation>()
                 .setQuery(query, ApointementInformation.class)

@@ -84,50 +84,43 @@ public class ProfileDoctorActivity extends AppCompatActivity {
         docRef.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                doctorName.setText(documentSnapshot.getString("name"));
-                doctorSpe.setText(documentSnapshot.getString("specialite"));
-                doctorPhone.setText(documentSnapshot.getString("tel"));
-                doctorEmail.setText(documentSnapshot.getString("email"));
-                doctorAddress.setText(documentSnapshot.getString("adresse"));
+                doctorName.setText(documentSnapshot.getString("Name"));
+                doctorSpe.setText(documentSnapshot.getString("Speciality"));
+                doctorPhone.setText(documentSnapshot.getString("Telephone"));
+                doctorEmail.setText(documentSnapshot.getString("Email"));
+                doctorAddress.setText(documentSnapshot.getString("Address"));
             }
         });
-        // Find the toolbar view inside the activity layout
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        // Sets the Toolbar to act as the ActionBar for this Activity window.
-        // Make sure the toolbar exists in the activity and is not null
+
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        //getSupportActionBar().setLogo(R.mipmap.ic_launcher);
-        //getSupportActionBar().setDisplayUseLogoEnabled(true);
+
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        // Get access to the custom title view
+
         TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
     }
 
-    // Menu icons are inflated just as they were with actionbar
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.top_app_bar, menu);
         return true;
     }
 
-    //Handling Action Bar button click
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
         switch (item.getItemId()) {
-            //Back button
+
             case R.id.back:
-                //If this activity started from other activity
                 finish();
                 startHomeActivity();
                 return true;
 
             case R.id.edit:
-                //If the edit button is clicked.
                 startEditActivity();
                 return true;
             default:

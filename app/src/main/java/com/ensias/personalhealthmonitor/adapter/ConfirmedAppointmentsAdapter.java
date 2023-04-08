@@ -33,7 +33,7 @@ public class ConfirmedAppointmentsAdapter extends FirestoreRecyclerAdapter<Apoin
         confirmedAppointmentsHolder.appointementType.setText(apointementInformation.getApointementType());
 
         String imageId = apointementInformation.getPatientId()+".jpg"; //add a title image
-        pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/"+ imageId); //storage the image
+        pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/"+ imageId);
         pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -42,9 +42,9 @@ public class ConfirmedAppointmentsAdapter extends FirestoreRecyclerAdapter<Apoin
                         .placeholder(R.mipmap.ic_launcher)
                         .fit()
                         .centerCrop()
-                        .into(confirmedAppointmentsHolder.patientImage);//Image location
+                        .into(confirmedAppointmentsHolder.patientImage);
 
-                // profileImage.setImageURI(uri);
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

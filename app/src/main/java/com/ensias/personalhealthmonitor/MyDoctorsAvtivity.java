@@ -28,7 +28,7 @@ public class MyDoctorsAvtivity extends AppCompatActivity {
     }
 
     public void setUpRecyclerView(){
-        //Get the doctors by patient id
+
         final String patientID = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
         Query query = myDoctorsRef.document(""+patientID+"")
                 .collection("MyDoctors").orderBy("name", Query.Direction.DESCENDING);
@@ -38,7 +38,6 @@ public class MyDoctorsAvtivity extends AppCompatActivity {
                 .build();
 
         adapter = new MyDoctorsAdapter(options);
-        //ListMyDoctors
         RecyclerView recyclerView = findViewById(R.id.ListMyDoctors);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

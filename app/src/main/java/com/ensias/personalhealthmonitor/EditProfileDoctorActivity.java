@@ -68,28 +68,20 @@ public class EditProfileDoctorActivity extends AppCompatActivity {
         updateProfile = findViewById(R.id.update);
         doctorName = findViewById(R.id.nameText);
         doctorPhone = findViewById(R.id.phoneText);
-        //doctorEmail = findViewById(R.id.emailText);
         doctorAddress = findViewById(R.id.addressText);
 
         pStorageRef = FirebaseStorage.getInstance().getReference("DoctorProfile");
         pDatabaseRef = FirebaseDatabase.getInstance().getReference("DoctorProfile");
 
-        //get the default doctor's informations from ProfileDoctorActivity
         Intent intent = getIntent(); //get the current intent
         String current_name = intent.getStringExtra("CURRENT_NAME");
         String current_phone = intent.getStringExtra("CURRENT_PHONE");
         String current_address = intent.getStringExtra("CURRENT_ADDRESS");
 
-        //Set the default informtions in he text fields
         doctorName.setText(current_name);
         doctorPhone.setText(current_phone);
         doctorAddress.setText(current_address);
-        /*
-        currentUserImg = FirebaseDatabase.getInstance().getReference("DoctorProfile").child("1590965871687");
-        Glide.with(this)
-                .load(currentUserImg)
-                .into(profileImage);
-                   */
+
         String userPhotoPath = currentDoctorUID + ".jpg";
         pathReference = storageRef.child("DoctorProfile/" + userPhotoPath); //Doctor photo in database
         pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -100,9 +92,8 @@ public class EditProfileDoctorActivity extends AppCompatActivity {
                         .placeholder(R.drawable.doctor)
                         .fit()
                         .centerCrop()
-                        .into(profileImage);//Store here the imageView
+                        .into(profileImage);
 
-                // profileImage.setImageURI(uri);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -126,7 +117,6 @@ public class EditProfileDoctorActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String updateAddress = doctorAddress.getText().toString();
                 String updateName = doctorName.getText().toString();
-                //String updateEmail = doctorEmail.getText().toString();
                 String updatePhone = doctorPhone.getText().toString();
                 uploadProfileImage();
                 updateDoctorInfos(updateName, updateAddress, updatePhone);
@@ -134,17 +124,16 @@ public class EditProfileDoctorActivity extends AppCompatActivity {
         });
     }
 
-    /* Update the doctor info in the database */
+
     private void updateDoctorInfos(String name, String address, String phone) {
         DocumentReference documentReference = doctorRef.collection("Doctor").document("" + doctorID + "");
-        documentReference.update("adresse", address);
-        //documentReference.update("email", email);
-        documentReference.update("name", name);
-        documentReference.update("tel", phone)
+        documentReference.update("Address", address);
+        documentReference.update("Name", name);
+        documentReference.update("Telephone", phone)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(EditProfileDoctorActivity.this, "Infos Updated", Toast.LENGTH_LONG).show();
+                        Toast.makeText(EditProfileDoctorActivity.this, "Information Updated", Toast.LENGTH_LONG).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -210,44 +199,12 @@ public class EditProfileDoctorActivity extends AppCompatActivity {
                         pDatabaseRef.push().setValue(upload);
                     }
 
-                    /*
-                    if (uriImage != null) {
-                        StorageReference fileReference = pStorageRef.child(System.currentTimeMillis()
-                                + "." + getFileExtension(uriImage));
-                        fileReference.putFile(uriImage)
-                                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                    @Override
-                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                        Toast.makeText(EditProfileDoctorActivity.this, "Update Successful", Toast.LENGTH_SHORT)
-                                                .show();
-                                        //Upload the image to the database
-                                        UploadImage uploadImage = new UploadImage(currentDoctorUID, taskSnapshot.getDownloadUrl().toString());
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(EditProfileDoctorActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT)
-                                                .show();
-                                    }
-                                });
-                    }*/
+
                     else {
-                        Toast.makeText(EditProfileDoctorActivity.this, "upload failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditProfileDoctorActivity.this, "Upload failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
 
-                /*
-                private void getDownloadUrl(StorageReference fileReference) {
-                    fileReference.getDownloadUrl()
-                            .addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                @Override
-                                public void onSuccess(Uri uri) {
-                                    //Log.d(TAG, "onSuccess" + uri);
-                                }
-                            });
-                }
-                 */
 
 
             });

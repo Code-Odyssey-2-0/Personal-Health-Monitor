@@ -86,27 +86,27 @@ public class MainActivity extends AppCompatActivity {
                         .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
+                                System.out.println(task);
                                 if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
+
                                     Log.d("TAG", "createUserWithEmail:success");
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     updateUI(user);
                                 } else {
-                                    // If sign in fails, display a message to the user.
+
                                     Log.w("TAG", "createUserWithEmail:failure", task.getException());
                                     Toast.makeText(MainActivity.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
                                     updateUI(null);
                                 }
 
-                                // ...
                             }
                         });
             }else{
-                    Toast.makeText(MainActivity.this, "vous devez rensegner toutes les champs",
+                    Toast.makeText(MainActivity.this, "Required to Fill",
                             Toast.LENGTH_SHORT).show();
                     if(!password.equals(confirmPass)){
-                        Toast.makeText(MainActivity.this, "Confirm pass don't match password",
+                        Toast.makeText(MainActivity.this, "Password doesn't match.",
                                 Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -124,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
                                     Log.d("TAG", "signInWithEmail:success");
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     updateUI(user);
@@ -140,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
             }else{
-                    Toast.makeText(MainActivity.this, "vous devez rensegnier toutes les champs",
+                    Toast.makeText(MainActivity.this, "Required to Fill",
                             Toast.LENGTH_SHORT).show();
                 }
             }
@@ -180,7 +179,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
     }
@@ -189,17 +187,17 @@ public class MainActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
-                // Google Sign In was successful, authenticate with Firebase
+
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
-                // Google Sign In failed, update UI appropriately
+
                 Log.w("TAG", "Google sign in failed", e);
-                // ...
+
             }
         }
     }
@@ -213,12 +211,12 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
+
                             Log.d("TAG", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
                         } else {
-                            // If sign in fails, display a message to the user.
+
                             Log.w("TAG", "signInWithCredential:failure", task.getException());
                             Snackbar.make(findViewById(R.id.main_layout), "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
                             updateUI(null);
@@ -235,17 +233,20 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
+                            System.out.println("test : 1");
                             UsersRef.document(currentUser.getEmail()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                 @Override
                                 public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                    System.out.println("test : 2 "+ documentSnapshot);
                                     User user=documentSnapshot.toObject(User.class);
+                                    System.out.println("test : 3 "+ user);
                                     if(user.getType().equals("Patient")){
                                         Intent k = new Intent(MainActivity.this, HomeActivity.class);
                                         startActivity(k);
                                     }else{
                                         Intent k = new Intent(MainActivity.this, DoctorHomeActivity.class);
                                         startActivity(k);
-                                        //Snackbar.make(findViewById(R.id.main_layout), "Doctor interface entraint de realisation", Snackbar.LENGTH_SHORT).show();
+
                                     }
                                 }
                             });
