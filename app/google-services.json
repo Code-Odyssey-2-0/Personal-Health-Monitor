@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "583307966526",
+    "project_id": "personal-health-monitor-6c0f6",
+    "storage_bucket": "personal-health-monitor-6c0f6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583307966526:android:b854726cf9884ad670b96f",
+        "android_client_info": {
+          "package_name": "com.app.personalhealthmonitor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "583307966526-df7vpe6se7f84pj8esn323tt5bfv0k0a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAA_ZqWaat1WySVM5XWne6QprgMsnBk5C4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "583307966526-df7vpe6se7f84pj8esn323tt5bfv0k0a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
