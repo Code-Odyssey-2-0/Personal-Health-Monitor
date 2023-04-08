@@ -8,9 +8,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ensias.healthcareapp.R;
-import com.ensias.healthcareapp.model.ApointementInformation;
-import com.ensias.healthcareapp.model.Doctor;
+import com.app.personalhealthmonitor.R;
+import com.app.personalhealthmonitor.model.ApointementInformation;
+import com.app.personalhealthmonitor.model.Doctor;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;

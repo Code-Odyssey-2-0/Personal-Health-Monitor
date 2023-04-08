@@ -15,11 +15,11 @@ import androidx.cardview.widget.CardView;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ensias.healthcareapp.Common.Common;
-import com.ensias.healthcareapp.Interface.IRecyclerItemSelectedListener;
-import com.ensias.healthcareapp.R;
-import com.ensias.healthcareapp.model.ApointementInformation;
-import com.ensias.healthcareapp.model.TimeSlot;
+import com.app.personalhealthmonitor.Common.Common;
+import com.app.personalhealthmonitor.Interface.IRecyclerItemSelectedListener;
+import com.app.personalhealthmonitor.R;
+import com.app.personalhealthmonitor.model.ApointementInformation;
+import com.app.personalhealthmonitor.model.TimeSlot;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 

@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.ensias.healthcareapp.fragment.BookingStep1Fragment;
-import com.ensias.healthcareapp.fragment.BookingStep2Fragment;
-import com.ensias.healthcareapp.fragment.BookingStep3Fragment;
+import com.app.personalhealthmonitor.fragment.BookingStep1Fragment;
+import com.app.personalhealthmonitor.fragment.BookingStep2Fragment;
+import com.app.personalhealthmonitor.fragment.BookingStep3Fragment;
 
 public class MyViewPagerAdapter extends FragmentPagerAdapter {
 

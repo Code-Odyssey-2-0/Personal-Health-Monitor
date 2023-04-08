@@ -12,12 +12,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ensias.healthcareapp.MainActivity;
-import com.ensias.healthcareapp.PatientRequestPage;
-import com.ensias.healthcareapp.R;
-import com.ensias.healthcareapp.model.Doctor;
-import com.ensias.healthcareapp.model.Patient;
-import com.ensias.healthcareapp.model.Request;
+import com.app.personalhealthmonitor.MainActivity;
+import com.app.personalhealthmonitor.PatientRequestPage;
+import com.app.personalhealthmonitor.R;
+import com.app.personalhealthmonitor.model.Doctor;
+import com.app.personalhealthmonitor.model.Patient;
+import com.app.personalhealthmonitor.model.Request;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
