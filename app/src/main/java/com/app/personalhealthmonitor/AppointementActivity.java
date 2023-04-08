@@ -9,7 +9,7 @@ import android.widget.TextView;
 <<<<<<< HEAD
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ap.personalhealthmonitor.model.Hour;
+import com.app.personalhealthmonitor.model.Hour;
 =======
 import com.app.personalhealthmonitor.model.Hour;
 import com.google.android.gms.tasks.OnFailureListener;

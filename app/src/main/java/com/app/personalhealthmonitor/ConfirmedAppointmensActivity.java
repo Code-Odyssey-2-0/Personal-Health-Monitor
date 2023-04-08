@@ -9,10 +9,10 @@ import com.app.personalhealthmonitor.adapter.MyDoctorsAdapter;
 import com.app.personalhealthmonitor.model.ApointementInformation;
 import com.app.personalhealthmonitor.model.Doctor;
 =======
-import com.ensias.healthcareapp.adapter.ConfirmedAppointmentsAdapter;
-import com.ensias.healthcareapp.adapter.MyDoctorsAdapter;
-import com.ensias.healthcareapp.model.ApointementInformation;
-import com.ensias.healthcareapp.model.Doctor;
+import com.app.personalhealthmonitor.adapter.ConfirmedAppointmentsAdapter;
+import com.app.personalhealthmonitor.adapter.MyDoctorsAdapter;
+import com.app.personalhealthmonitor.model.ApointementInformation;
+import com.app.personalhealthmonitor.model.Doctor;
 >>>>>>> master
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
