@@ -1,4 +1,4 @@
-package com.ensias.healthcareapp;
+package com.app.personalhealthmonitor;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
