@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.app.personalhealthmonitor.Common.Common;
 import com.app.personalhealthmonitor.Interface.ITimeSlotLoadListener;
 import com.app.personalhealthmonitor.R;
+import com.app.personalhealthmonitor.adapter.MyTimeSlotAdapter;
 import com.app.personalhealthmonitor.model.TimeSlot;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -31,6 +32,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import org.xml.sax.helpers.NamespaceSupport;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -148,7 +151,7 @@ public class BookingStep2Fragment extends Fragment implements ITimeSlotLoadListe
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, savedInstanceState);
+         super.onCreateView(inflater, container, savedInstanceState);
         View itemView = inflater.inflate(R.layout.fragment_booking_step_two,container,false);
         unbinder = ButterKnife.bind(this,itemView);
 

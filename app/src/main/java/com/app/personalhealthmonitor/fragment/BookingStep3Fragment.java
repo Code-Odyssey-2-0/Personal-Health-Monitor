@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import com.app.personalhealthmonitor.Common.Common;
 import com.app.personalhealthmonitor.R;
-import com.app.personalhealthmonitor.model.AppointmentInfo;
+import com.ensias.healthcareapp.model.ApointementInformation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -56,27 +56,27 @@ public class BookingStep3Fragment extends Fragment {
     TextView txt_booking_phone;
 
     @OnClick(R.id.btn_confirm)
-    void confirmedAppointment(){
-        AppointmentInfo appointmentInfo = new AppointmentInfo();
-        appointmentInfo.setAppointmentType(Common.CurrentAppointmentType);
-        appointmentInfo.setDoctorId(Common.CurrentDoctor);
-        appointmentInfo.setDoctorName(Common.CurrentDoctorName);
-        appointmentInfo.setPatientName(Common.CurrentUserName);
-        appointmentInfo.setPatientId(Common.CurrentUserid);
-        appointmentInfo.setChemin("Doctor/"+Common.CurreentDoctor+"/"+Common.simpleFormat.format(Common.currentDate.getTime())+"/"+String.valueOf(Common.currentTimeSlot));
-        appointmentInfo.setType("Checked");
-        appointmentInfo.setTime(new StringBuilder(Common.convertTimeSlotToString(Common.currentTimeSlot))
+    void confirmeApointement(){
+        ApointementInformation apointementInformation = new ApointementInformation();
+        apointementInformation.setApointementType(Common.Currentaappointementatype);
+        apointementInformation.setDoctorId(Common.CurreentDoctor);
+        apointementInformation.setDoctorName(Common.CurrentDoctorName);
+        apointementInformation.setPatientName(Common.CurrentUserName);
+        apointementInformation.setPatientId(Common.CurrentUserid);
+        apointementInformation.setChemin("Doctor/"+Common.CurreentDoctor+"/"+Common.simpleFormat.format(Common.currentDate.getTime())+"/"+String.valueOf(Common.currentTimeSlot));
+        apointementInformation.setType("Checked");
+        apointementInformation.setTime(new StringBuilder(Common.convertTimeSlotToString(Common.currentTimeSlot))
                 .append("at")
                 .append(simpleDateFormat.format(Common.currentDate.getTime())).toString());
-        appointmentInfo.setSlot(Long.valueOf(Common.currentTimeSlot));
+        apointementInformation.setSlot(Long.valueOf(Common.currentTimeSlot));
 
         DocumentReference bookingDate = FirebaseFirestore.getInstance()
                 .collection("Doctor")
-                .document(Common.CurrentDoctor)
+                .document(Common.CurreentDoctor)
                 .collection(Common.simpleFormat.format(Common.currentDate.getTime()))
                 .document(String.valueOf(Common.currentTimeSlot));
 
-        bookingDate.set(appointmentInfo)
+        bookingDate.set(apointementInformation)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -87,20 +87,20 @@ public class BookingStep3Fragment extends Fragment {
                         Common.step = 0;
                     }
                 }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getContext(),""+e.getMessage(),Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        FirebaseFirestore.getInstance().collection("Doctor").document(Common.CurrentDoctor)
-                                .collection("appointmentrequest").document(appointmentInfo.getTime().replace("/","_")).set(appointmentInfo);
-                        FirebaseFirestore.getInstance().collection("Patient").document(appointmentInfo.getPatientId()).collection("calendar")
-                                .document(appointmentInfo.getTime().replace("/","_")).set(appointmentInfo);
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getContext(),""+e.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        }).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                FirebaseFirestore.getInstance().collection("Doctor").document(Common.CurreentDoctor)
+                        .collection("apointementrequest").document(apointementInformation.getTime().replace("/","_")).set(apointementInformation);
+                FirebaseFirestore.getInstance().collection("Patient").document(apointementInformation.getPatientId()).collection("calendar")
+                        .document(apointementInformation.getTime().replace("/","_")).set(apointementInformation);
 
-                    }
-                });
+            }
+        });
 
 //
     }
@@ -118,10 +118,10 @@ public class BookingStep3Fragment extends Fragment {
     private void setData() {
         txt_booking_berber_text.setText(Common.CurrentDoctorName);
         txt_booking_time_text.setText(new StringBuilder(Common.convertTimeSlotToString(Common.currentTimeSlot))
-                .append("at")
-                .append(simpleDateFormat.format(Common.currentDate.getTime())));
+        .append("at")
+        .append(simpleDateFormat.format(Common.currentDate.getTime())));
         txt_booking_phone.setText(Common.CurrentPhone);
-        txt_booking_type.setText(Common.CurrentAppointmentType);
+        txt_booking_type.setText(Common.Currentaappointementatype);
     }
 
     public BookingStep3Fragment() {
