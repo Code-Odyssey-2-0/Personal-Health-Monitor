@@ -13,9 +13,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.ensias.healthcareapp.fireStoreApi.DoctorHelper;
-import com.ensias.healthcareapp.fireStoreApi.PatientHelper;
-import com.ensias.healthcareapp.fireStoreApi.UserHelper;
+import com.app.personalhealthmonitor.fireStoreApi.DoctorHelper;
+import com.app.personalhealthmonitor.fireStoreApi.PatientHelper;
+import com.app.personalhealthmonitor.fireStoreApi.UserHelper;
 
 import static android.widget.AdapterView.*;
 
