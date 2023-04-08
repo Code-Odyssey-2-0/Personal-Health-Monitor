@@ -20,9 +20,9 @@ import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-public class ConfirmedAppointment  extends FirestoreRecyclerAdapter<AppointmentInfo, ConfirmedAppointment.ConfirmedAppointmentsHolder> {
+public class ConfirmedAppointments  extends FirestoreRecyclerAdapter<AppointmentInfo, ConfirmedAppointments.ConfirmedAppointmentsHolder> {
         StorageReference pathReference ;
-public ConfirmedAppointment(@NonNull FirestoreRecyclerOptions<AppointmentInfo> options) {
+public ConfirmedAppointments(@NonNull FirestoreRecyclerOptions<AppointmentInfo> options) {
         super(options);
         }
 @Override
@@ -56,9 +56,9 @@ public void onFailure(@NonNull Exception exception) {
 
 @NonNull
 @Override
-public ConfirmedAppointment.ConfirmedAppointmentsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+public ConfirmedAppointments.ConfirmedAppointmentsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.confirmed_appointments_item, parent, false);
-        return new ConfirmedAppointment.ConfirmedAppointmentsHolder(v);
+        return new ConfirmedAppointments.ConfirmedAppointmentsHolder(v);
         }
 
 class ConfirmedAppointmentsHolder extends RecyclerView.ViewHolder{
