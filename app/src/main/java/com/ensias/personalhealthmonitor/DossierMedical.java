@@ -96,7 +96,6 @@ public class DossierMedical extends AppCompatActivity {
 
     }
 
-    //Receive patient informations from the previous activity
     private void getIncomingIntent(){
         Log.d(TAG, "getIncomingIntent: checking for incoming intents");
         //Check if the incoming intents exist

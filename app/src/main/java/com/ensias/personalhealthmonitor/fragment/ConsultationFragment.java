@@ -21,13 +21,13 @@ public class ConsultationFragment extends Fragment {
     public ConsultationFragment() {
     }
 
-    // 2 - Method that will create a new instance of PageFragment, and add data to its bundle.
+
     public static ConsultationFragment newInstance(int position, int color) {
 
-        // 2.1 Create new fragment
+
         ConsultationFragment frag = new ConsultationFragment();
 
-        // 2.2 Create bundle and add it some data
+
         Bundle args = new Bundle();
         args.putInt(KEY_POSITION, position);
         args.putInt(KEY_COLOR, color);
@@ -41,17 +41,17 @@ public class ConsultationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View result = inflater.inflate(R.layout.fragment_consultation, container, false);
-        // 4 - Get widgets from layout and serialise it
+
         LinearLayout rootView= (LinearLayout) result.findViewById(R.id.fragment_page_rootview);
         TextView textView= (TextView) result.findViewById(R.id.fragment_page_title);
 
-        // 5 - Get data from Bundle (created in method newInstance)
+
         int position = getArguments().getInt(KEY_POSITION, -1);
         int color = getArguments().getInt(KEY_COLOR, -1);
 
-        // 6 - Update widgets with it
+
         rootView.setBackgroundColor(color);
         textView.setText("Page numéro "+position);
 

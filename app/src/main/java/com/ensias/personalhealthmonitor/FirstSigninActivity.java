@@ -35,12 +35,9 @@ public class FirstSigninActivity extends AppCompatActivity {
         teL = (EditText) findViewById(R.id.firstSignTel);
 
         final Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.planets_array, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
         final Spinner specialiteList = (Spinner) findViewById(R.id.specialite_spinner);
@@ -80,11 +77,11 @@ public class FirstSigninActivity extends AppCompatActivity {
                 specialite = specialiteList.getSelectedItem().toString();
                 UserHelper.addUser(fullname, birtDay, tel, type);
                 if (type.equals("Patient")) {
-                    PatientHelper.addPatient(fullname, "adress", tel);
+                    PatientHelper.addPatient(fullname, "Address", tel);
                     System.out.println("Add patient " + fullname + " to patient collection");
 
                 } else {
-                    DoctorHelper.addDoctor(fullname, "adress", tel, specialite);
+                    DoctorHelper.addDoctor(fullname, "Address", tel, specialite);
                 }
                 Intent k = new Intent(FirstSigninActivity.this, MainActivity.class);
                 startActivity(k);

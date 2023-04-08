@@ -60,7 +60,6 @@ public class DoctorAdapterFiltred  extends RecyclerView.Adapter<DoctorAdapterFil
         final Doctor doctor = mTubeListFiltered.get(i);
         final TextView t = doctoreHolder.title ;
         doctoreHolder.title.setText(doctor.getName());
-        /// ajouter l'image
 
         String imageId = doctor.getEmail()+".jpg";
         pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/"+ imageId);
@@ -72,9 +71,9 @@ public class DoctorAdapterFiltred  extends RecyclerView.Adapter<DoctorAdapterFil
                         .placeholder(R.mipmap.ic_launcher)
                         .fit()
                         .centerCrop()
-                        .into(doctoreHolder.image);//Image location
+                        .into(doctoreHolder.image);
 
-                // profileImage.setImageURI(uri);
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -82,10 +81,10 @@ public class DoctorAdapterFiltred  extends RecyclerView.Adapter<DoctorAdapterFil
                 // Handle any errors
             }
         });
-        doctoreHolder.specialite.setText("Specialite : "+doctor.getSpecialite());
+        doctoreHolder.specialite.setText("Speciality : "+doctor.getSpecialite());
         final String idPat = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
         final String idDoc = doctor.getEmail();
-        // doctoreHolder.image.setImageURI(Uri.parse("drawable-v24/ic_launcher_foreground.xml"));
+
         doctoreHolder.addDoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,7 +95,7 @@ public class DoctorAdapterFiltred  extends RecyclerView.Adapter<DoctorAdapterFil
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Snackbar.make(t, "Demande envoyée", Snackbar.LENGTH_SHORT).show();
+                                Snackbar.make(t, "Request Sent", Snackbar.LENGTH_SHORT).show();
                             }
                         });
                 doctoreHolder.addDoc.setVisibility(View.INVISIBLE);

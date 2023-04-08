@@ -81,7 +81,7 @@ public class MyTimeSlotAdapter extends RecyclerView.Adapter<MyTimeSlotAdapter.My
 
                     holder.txt_time_slot_description.setText("Full");
                     if(slotValue.getType().equals("Checked"))
-                        holder.txt_time_slot_description.setText("Choosen");
+                        holder.txt_time_slot_description.setText("Chosen");
                     holder.txt_time_slot_description.setTextColor(context.getResources()
                             .getColor(android.R.color.white));
                     holder.txt_time_slot.setTextColor(context.getResources().getColor(android.R.color.white));

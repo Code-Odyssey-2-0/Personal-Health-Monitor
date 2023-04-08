@@ -34,7 +34,7 @@ public class FicheActivity extends AppCompatActivity implements AdapterView.OnIt
         traitement = findViewById(R.id.fiche_traitement);
         ficheType = findViewById(R.id.fiche_type_spinner);
 
-        //Spinner to choose fiche type
+
         Spinner spinner = findViewById(R.id.fiche_type_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.fiche_type, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -75,7 +75,6 @@ public class FicheActivity extends AppCompatActivity implements AdapterView.OnIt
         CollectionReference ficheRef = FirebaseFirestore.getInstance().collection("Patient").document(""+patient_email+"")
                 .collection("MyMedicalFolder");
         ficheRef.document().set(new Fiche(maladieFiche, descriptionFiche, traitemenfiche, typeFiche, FirebaseAuth.getInstance().getCurrentUser().getEmail().toString()));
-        //ficheRef.add(new Fiche(maladieFiche, descriptionFiche, traitemenfiche, typeFiche, FirebaseAuth.getInstance().getCurrentUser().getEmail().toString()));
         Toast.makeText(this, "Fiche added."+patient_name, Toast.LENGTH_LONG).show();
         finish();
     }
