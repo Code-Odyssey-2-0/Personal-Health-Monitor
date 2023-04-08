@@ -3,14 +3,14 @@ package com.app.personalhealthmonitor.model;
 public class TimeSlot {
     private Long slot;
     private String type ;
-    private String min;
+    private String chemin;
 
-    public String getMin() {
-        return min;
+    public String getChemin() {
+        return chemin;
     }
 
-    public void setMin(String min) {
-        this.min = min;
+    public void setChemin(String chemin) {
+        this.chemin = chemin;
     }
 
     public String getType() {

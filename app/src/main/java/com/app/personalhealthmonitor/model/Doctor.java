@@ -2,21 +2,21 @@ package com.app.personalhealthmonitor.model;
 
 public class Doctor {
     private String name;
-    private String address;
+    private String adresse;
     private String tel;
     private String email;
-    private String speciality;
+    private String specialite;
 
     public Doctor(){
         //needed for firebase
     }
 
-    public Doctor(String name, String address, String tel, String email, String speciality) {
+    public Doctor(String name, String adresse, String tel, String email, String specialite) {
         this.name = name;
-        this.address = address;
+        this.adresse = adresse;
         this.tel = tel;
         this.email = email;
-        this.speciality = speciality;
+        this.specialite = specialite;
     }
 
     public String getName() {
@@ -27,12 +27,12 @@ public class Doctor {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAdresse() {
+        return adresse;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
 
     public String getTel() {
@@ -51,11 +51,11 @@ public class Doctor {
         this.email = email;
     }
 
-    public String getSpeciality() {
-        return speciality;
+    public String getSpecialite() {
+        return specialite;
     }
 
-    public void setSpeciality(String speciality) {
-        this.speciality = speciality;
+    public void setSpecialite(String specialite) {
+        this.specialite = specialite;
     }
 }
