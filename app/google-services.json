@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "591162435289",
+    "project_id": "healthcare-ee37b",
+    "storage_bucket": "healthcare-ee37b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:591162435289:android:937519c74de7cb6df140c8",
+        "android_client_info": {
+          "package_name": "com.ensias.healthcareapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "591162435289-krjva8hcn8d6ng3obeq13fcu35d20nta.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOvUBLNWIKNGeFo_m3IIFn3FmeMcaZkBw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "591162435289-krjva8hcn8d6ng3obeq13fcu35d20nta.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
