@@ -1,4 +1,4 @@
-package com.app.personalhealthmonitor.Model;
+package com.app.personalhealthmonitor.model;
 
 public class AppointmentInfo {
     private  String patientName,time,doctorId,doctorName,patientId,type,appointmentType,min;

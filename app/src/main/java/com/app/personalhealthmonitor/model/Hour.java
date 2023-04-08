@@ -1,4 +1,4 @@
-package com.app.personalhealthmonitor.Model;
+package com.app.personalhealthmonitor.model;
 
 public class Hour {
     private String patient;

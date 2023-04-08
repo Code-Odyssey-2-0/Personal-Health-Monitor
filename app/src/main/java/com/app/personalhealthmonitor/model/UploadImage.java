@@ -1,4 +1,4 @@
-package com.app.personalhealthmonitor.Model;
+package com.app.personalhealthmonitor.model;
 
 public class UploadImage {
     private String imgName;

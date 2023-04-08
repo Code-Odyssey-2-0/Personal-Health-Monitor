@@ -1,5 +1,5 @@
 package com.app.personalhealthmonitor.Model;
-//import com.google.firebase.firestore.ServerTimestamp;
+import com.google.firebase.firestore.ServerTimestamp;
 
 import java.util.Date;
 
@@ -20,7 +20,7 @@ public class Message {
     // --- GETTERS ---
     public String getMessage() { return message; }
 
-//    @ServerTimestamp
+    @ServerTimestamp
     public Date getDateCreated() { return dateCreated; }
     public String getUserSender() { return userSender; }
 
