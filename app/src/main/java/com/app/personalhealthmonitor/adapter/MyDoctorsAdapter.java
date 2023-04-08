@@ -12,9 +12,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.app.personalhealthmonitor.ChatActivity;
-import com.app.personalhealthmonitor.R;
-import com.app.personalhealthmonitor.model.Doctor;
+import com.ensias.healthcareapp.ChatActivity;
+import com.ensias.healthcareapp.R;
+import com.ensias.healthcareapp.model.Doctor;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -27,21 +27,21 @@ import com.squareup.picasso.Picasso;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyDoctors extends FirestoreRecyclerAdapter<Doctor, MyDoctors.MyDoctorAppointmentHolder> {
+public class MyDoctorsAdapter extends FirestoreRecyclerAdapter<Doctor, MyDoctorsAdapter.MyDoctorAppointementHolder> {
     StorageReference pathReference ;
 
     /**
      * Create a new RecyclerView adapter that listens to a Firestore Query.
      * @param options
      */
-    public MyDoctors(@NonNull FirestoreRecyclerOptions<Doctor> options) {
+    public MyDoctorsAdapter(@NonNull FirestoreRecyclerOptions<Doctor> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull MyDoctorAppointmentHolder myDoctorsHolder, int position, @NonNull final Doctor doctor) {
+    protected void onBindViewHolder(@NonNull MyDoctorAppointementHolder myDoctorsHolder, int position, @NonNull final Doctor doctor) {
         myDoctorsHolder.textViewTitle.setText(doctor.getName());
-        myDoctorsHolder.textViewDescription.setText("Speciality : "+doctor.getSpeciality());
+        myDoctorsHolder.textViewDescription.setText("Specialite : "+doctor.getSpecialite());
         myDoctorsHolder.sendMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,12 +91,12 @@ public class MyDoctors extends FirestoreRecyclerAdapter<Doctor, MyDoctors.MyDoct
 
     @NonNull
     @Override
-    public MyDoctorAppointmentHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyDoctorAppointementHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_doctor_item, parent, false);
-        return new MyDoctorAppointmentHolder(v);
+        return new MyDoctorAppointementHolder(v);
     }
 
-    class MyDoctorAppointmentHolder extends RecyclerView.ViewHolder{
+    class MyDoctorAppointementHolder extends RecyclerView.ViewHolder{
         //Here we hold the MyDoctorItems
         TextView textViewTitle;
         TextView textViewDescription;
@@ -105,7 +105,7 @@ public class MyDoctors extends FirestoreRecyclerAdapter<Doctor, MyDoctors.MyDoct
         Button sendMessageButton;
         Button callBtn;
         Button contactButton;
-        public MyDoctorAppointmentHolder(@NonNull View itemView) {
+        public MyDoctorAppointementHolder(@NonNull View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.doctor_view_title);
             textViewDescription = itemView.findViewById(R.id.text_view_description);

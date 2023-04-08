@@ -10,11 +10,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.app.personalhealthmonitor.ChatActivity;
-import com.app.personalhealthmonitor.R;
-import com.app.personalhealthmonitor.model.ApointementInformation;
-import com.app.personalhealthmonitor.model.Doctor;
-import com.app.personalhealthmonitor.model.Patient;
+import com.ensias.healthcareapp.ChatActivity;
+import com.ensias.healthcareapp.R;
+import com.ensias.healthcareapp.model.ApointementInformation;
+import com.ensias.healthcareapp.model.Doctor;
+import com.ensias.healthcareapp.model.Patient;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -29,7 +29,7 @@ import com.squareup.picasso.Picasso;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class DoctorAppointment extends FirestoreRecyclerAdapter<AppointmentInfo, DoctorAppointment.MyDoctorAppointmentHolder> {
+public class DoctorAppointementAdapter extends FirestoreRecyclerAdapter<ApointementInformation, DoctorAppointementAdapter.MyDoctorAppointementHolder> {
     StorageReference pathReference ;
 
 
@@ -37,41 +37,41 @@ public class DoctorAppointment extends FirestoreRecyclerAdapter<AppointmentInfo,
      * Create a new RecyclerView adapter that listens to a Firestore Query.
      * @param options
      */
-    public DoctorAppointment(@NonNull FirestoreRecyclerOptions<AppointmentInfo> options) {
+    public DoctorAppointementAdapter(@NonNull FirestoreRecyclerOptions<ApointementInformation> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull MyDoctorAppointmentHolder myDoctorAppointementHolder, int position, @NonNull final AppointmentInfo appointmentInfo) {
+    protected void onBindViewHolder(@NonNull MyDoctorAppointementHolder myDoctorAppointementHolder, int position, @NonNull final ApointementInformation apointementInformation) {
         myDoctorAppointementHolder.dateAppointement.setText(apointementInformation.getTime());
         myDoctorAppointementHolder.patientName.setText(apointementInformation.getPatientName());
-        myDoctorAppointementHolder.appointementType.setText(apointementInformation.getAppointmentType());
+        myDoctorAppointementHolder.appointementType.setText(apointementInformation.getApointementType());
         myDoctorAppointementHolder.approveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appointmentInfo.setType("Accepted");
-                FirebaseFirestore.getInstance().collection("Patient").document(appointmentInfo.getPatientId()).collection("calendar")
-                        .document(appointmentInfo.getTime().replace("/","_")).set(appointmentInfo);
-                FirebaseFirestore.getInstance().document(appointmentInfo.getChemin()).update("type","Accepted");
-                FirebaseFirestore.getInstance().collection("Doctor").document(appointmentInfo.getDoctorId()).collection("calendar")
-                        .document(appointmentInfo.getTime().replace("/","_")).set(appointmentInfo);
+                apointementInformation.setType("Accepted");
+                FirebaseFirestore.getInstance().collection("Patient").document(apointementInformation.getPatientId()).collection("calendar")
+                        .document(apointementInformation.getTime().replace("/","_")).set(apointementInformation);
+                FirebaseFirestore.getInstance().document(apointementInformation.getChemin()).update("type","Accepted");
+                FirebaseFirestore.getInstance().collection("Doctor").document(apointementInformation.getDoctorId()).collection("calendar")
+                        .document(apointementInformation.getTime().replace("/","_")).set(apointementInformation);
 
 //////////// here add patient friend to doctor
 
-                FirebaseFirestore.getInstance().document("Patient/"+appointmentInfo.getPatientId()).get()
+                FirebaseFirestore.getInstance().document("Patient/"+apointementInformation.getPatientId()).get()
                         .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                             @Override
                             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                FirebaseFirestore.getInstance().collection("Doctor").document(appointmentInfo.getDoctorId()+"")
-                                        .collection("MyPatients").document(appointmentInfo.getPatientId()).set(documentSnapshot.toObject(Patient.class));
+                                FirebaseFirestore.getInstance().collection("Doctor").document(apointementInformation.getDoctorId()+"")
+                                        .collection("MyPatients").document(apointementInformation.getPatientId()).set(documentSnapshot.toObject(Patient.class));
                             }
                         });
-                FirebaseFirestore.getInstance().document("Doctor/"+appointmentInfo.getDoctorId()).get()
+                FirebaseFirestore.getInstance().document("Doctor/"+apointementInformation.getDoctorId()).get()
                         .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                             @Override
                             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                FirebaseFirestore.getInstance().collection("Patient").document(appointmentInfo.getPatientId()+"")
-                                        .collection("MyDoctors").document(appointmentInfo.getPatientId()).set(documentSnapshot.toObject(Doctor.class));
+                                FirebaseFirestore.getInstance().collection("Patient").document(apointementInformation.getPatientId()+"")
+                                        .collection("MyDoctors").document(apointementInformation.getPatientId()).set(documentSnapshot.toObject(Doctor.class));
                             }
                         });
 
@@ -82,25 +82,25 @@ public class DoctorAppointment extends FirestoreRecyclerAdapter<AppointmentInfo,
         myDoctorAppointementHolder.cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appointmentInfo.setType("Refused");
-                FirebaseFirestore.getInstance().collection("Patient").document(appointmentInfo.getPatientId()).collection("calendar")
-                        .document(appointmentInfo.getTime().replace("/","_")).set(appointmentInfo);
-                FirebaseFirestore.getInstance().document(appointmentInfo.getChemin()).delete();
+                apointementInformation.setType("Refused");
+                FirebaseFirestore.getInstance().collection("Patient").document(apointementInformation.getPatientId()).collection("calendar")
+                        .document(apointementInformation.getTime().replace("/","_")).set(apointementInformation);
+                FirebaseFirestore.getInstance().document(apointementInformation.getChemin()).delete();
                 getSnapshots().getSnapshot(position).getReference().delete();
             }
         });
 
-        String imageId = appointmentInfo.getPatientId()+".jpg"; //add a title image
+        String imageId = apointementInformation.getPatientId()+".jpg"; //add a title image
         pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/"+ imageId); //storage the image
         pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                Picasso.with(myDoctorAppointmentHolder.patient_image.getContext())
+                Picasso.with(myDoctorAppointementHolder.patient_image.getContext())
                         .load(uri)
                         .placeholder(R.mipmap.ic_launcher)
                         .fit()
                         .centerCrop()
-                        .into(myDoctorAppointmentHolder.patient_image);//Image location
+                        .into(myDoctorAppointementHolder.patient_image);//Image location
 
                 // profileImage.setImageURI(uri);
             }
@@ -122,26 +122,26 @@ public class DoctorAppointment extends FirestoreRecyclerAdapter<AppointmentInfo,
 
     @NonNull
     @Override
-    public MyDoctorAppointmentHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.doctor_appointment_item, parent, false);
-        return new MyDoctorAppointmentHolder(v);
+    public MyDoctorAppointementHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.doctor_appointement_item, parent, false);
+        return new MyDoctorAppointementHolder(v);
     }
 
-    class MyDoctorAppointmentHolder extends RecyclerView.ViewHolder{
-        //Here we hold the MyDoctorAppointmentItems
-        TextView dateAppointment;
+    class MyDoctorAppointementHolder extends RecyclerView.ViewHolder{
+        //Here we hold the MyDoctorAppointementItems
+        TextView dateAppointement;
         TextView patientName;
         Button approveBtn;
         Button cancelBtn;
-        TextView appointmentType;
+        TextView appointementType;
         ImageView patient_image;
-        public MyDoctorAppointmentHolder(@NonNull View itemView) {
+        public MyDoctorAppointementHolder(@NonNull View itemView) {
             super(itemView);
-            dateAppointment = itemView.findViewById(R.id.appointment_date);
+            dateAppointement = itemView.findViewById(R.id.appointement_date);
             patientName = itemView.findViewById(R.id.patient_name);
             approveBtn = itemView.findViewById(R.id.btn_accept);
             cancelBtn = itemView.findViewById(R.id.btn_decline);
-            appointmentType = itemView.findViewById(R.id.appointment_type);
+            appointementType = itemView.findViewById(R.id.appointement_type);
             patient_image = itemView.findViewById(R.id.patient_image);
         }
     }

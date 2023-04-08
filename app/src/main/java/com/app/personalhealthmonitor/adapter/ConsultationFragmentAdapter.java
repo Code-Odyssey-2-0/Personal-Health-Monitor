@@ -4,16 +4,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.app.personalhealthmonitor.ConsultationFragmentPage;
-import com.app.personalhealthmonitor.Hospitalisation;
-import com.app.personalhealthmonitor.fragment.ConsultationFragment;
+import com.ensias.healthcareapp.ConsultationFragmentPage;
+import com.ensias.healthcareapp.Hospitalisation;
+import com.ensias.healthcareapp.fragment.ConsultationFragment;
 
-public class ConsultationFragment extends FragmentPagerAdapter {
+public class ConsultationFragmentAdapter extends FragmentPagerAdapter {
     // 1 - Array of colors that will be passed to PageFragment
     private int[] colors;
 
     // 2 - Default Constructor
-    public ConsultationFragment(FragmentManager mgr) {
+    public ConsultationFragmentAdapter(FragmentManager mgr) {
         super(mgr);
     }
 
@@ -46,4 +46,3 @@ public class ConsultationFragment extends FragmentPagerAdapter {
         }
     }
 }
-

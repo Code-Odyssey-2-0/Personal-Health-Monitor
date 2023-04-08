@@ -1,4 +1,4 @@
-package com.ensias.healthcareapp;
+package com.app.personalhealthmonitor;
 
 import android.os.Bundle;
 
@@ -22,7 +22,7 @@ public class ConsultationFragmentPage extends Fragment {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference FicheRef;
-    private ConsultationFragmentPage adapter;
+    private ConsultationAdapter adapter;
     View result;
 
     public ConsultationFragmentPage() {

@@ -22,7 +22,7 @@ public class ChatActivity extends AppCompatActivity {
     private Bundle extras;
     private CollectionReference MessageRef1 ;
     private CollectionReference MessageRef2 ;
-    private Message adapter;
+    private MessageAdapter adapter;
     private TextInputEditText envoyer;
     private Button btnEnvoyer;
     @Override

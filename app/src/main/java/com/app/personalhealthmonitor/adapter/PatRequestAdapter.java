@@ -12,12 +12,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.app.personalhealthmonitor.MainActivity;
-import com.app.personalhealthmonitor.PatientRequestPage;
-import com.app.personalhealthmonitor.R;
-import com.app.personalhealthmonitor.model.Doctor;
-import com.app.personalhealthmonitor.model.Patient;
-import com.app.personalhealthmonitor.model.Request;
+import com.ensias.healthcareapp.MainActivity;
+import com.ensias.healthcareapp.PatientRequestPage;
+import com.ensias.healthcareapp.R;
+import com.ensias.healthcareapp.model.Doctor;
+import com.ensias.healthcareapp.model.Patient;
+import com.ensias.healthcareapp.model.Request;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,16 +35,16 @@ import java.util.Map;
 import static androidx.core.content.ContextCompat.startActivities;
 import static androidx.core.content.ContextCompat.startActivity;
 
-public class PatientRequest extends FirestoreRecyclerAdapter<Request, PatientRequest.PatientRequestHolder> {
+public class PatRequestAdapter extends FirestoreRecyclerAdapter<Request, PatRequestAdapter.PatRequesteHolder> {
     static FirebaseFirestore db = FirebaseFirestore.getInstance();
     static CollectionReference addRequest = db.collection("Request");
 
-    public PatientRequest(@NonNull FirestoreRecyclerOptions<Request> options) {
+    public PatRequestAdapter(@NonNull FirestoreRecyclerOptions<Request> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull final PatientRequestHolder RequestHolder, final int i, @NonNull final Request request) {
+    protected void onBindViewHolder(@NonNull final PatRequesteHolder RequestHolder, final int i, @NonNull final Request request) {
         final TextView t = RequestHolder.title ;
         final String idPat = request.getId_patient();
         final String idDoc = FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
@@ -59,12 +59,12 @@ public class PatientRequest extends FirestoreRecyclerAdapter<Request, PatientReq
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         final Patient pat= documentSnapshot.toObject(Patient.class);
                         RequestHolder.title.setText(pat.getName());
-                        RequestHolder.speciality.setText("Want to be your patient");
+                        RequestHolder.specialite.setText("Want to be your patient");
                         RequestHolder.addDoc.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(final View v) {
                                 db.collection("Patient").document(idPat).collection("MyDoctors").document(idDoc).set(onligneDoc);
-                                db.collection("Doctor").document(idDoc+"").collection("MyPatients").document(idPat).set(Patient);
+                                db.collection("Doctor").document(idDoc+"").collection("MyPatients").document(idPat).set(pat);
                                 addRequest.whereEqualTo("id_doctor",idDoc+"").whereEqualTo("id_patient",idPat+"").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                                     @Override
                                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -96,23 +96,23 @@ public class PatientRequest extends FirestoreRecyclerAdapter<Request, PatientReq
 
     @NonNull
     @Override
-    public PatientRequestHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PatRequesteHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.pat_request_item,
                 parent, false);
-        return new PatientRequestHolder(v);
+        return new PatRequesteHolder(v);
     }
 
-    class PatientRequestHolder extends RecyclerView.ViewHolder {
+    class PatRequesteHolder extends RecyclerView.ViewHolder {
 
         TextView title;
-        TextView speciality;
+        TextView specialite;
         ImageView image;
         Button addDoc;
-        public PatientRequestHolder(@NonNull View itemView) {
+        public PatRequesteHolder(@NonNull View itemView) {
             super(itemView);
             addDoc = itemView.findViewById(R.id.pat_request_accept_btn);
             title= itemView.findViewById(R.id.pat_request_title);
-            speciality=itemView.findViewById(R.id.pat_request_description);
+            specialite=itemView.findViewById(R.id.pat_request_description);
             image=itemView.findViewById(R.id.pat_request_item_image);
 
         }

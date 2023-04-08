@@ -11,20 +11,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.app.personalhealthmonitor.ChatActivity;
-import com.app.personalhealthmonitor.FicheInfo;
-import com.app.personalhealthmonitor.R;
-import com.app.personalhealthmonitor.model.Doctor;
-import com.app.personalhealthmonitor.model.Fiche;
+import com.ensias.healthcareapp.ChatActivity;
+import com.ensias.healthcareapp.FicheInfo;
+import com.ensias.healthcareapp.R;
+import com.ensias.healthcareapp.model.Doctor;
+import com.ensias.healthcareapp.model.Fiche;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class Consultation  extends FirestoreRecyclerAdapter<Fiche,Consultation.FicheHolder>{
+import java.io.Serializable;
 
-    public Consultation(@NonNull FirestoreRecyclerOptions<Fiche> options) {
+public class ConsultationAdapter  extends FirestoreRecyclerAdapter<Fiche,ConsultationAdapter.FicheHolder>{
+
+    public ConsultationAdapter(@NonNull FirestoreRecyclerOptions<Fiche> options) {
         super(options);
     }
 
@@ -48,9 +51,9 @@ public class Consultation  extends FirestoreRecyclerAdapter<Fiche,Consultation.F
 
             date = model.getDateCreated().toString().split(" ");
             // Thu Jun 04 14:46:12 GMT+01:00 2020
-            holder.appointment_day_name.setText(date[0]);
-            holder.appointment_day.setText(date[2]);
-            holder.appointment_month.setText(date[1]);
+            holder.appointement_day_name.setText(date[0]);
+            holder.appointement_day.setText(date[2]);
+            holder.appointement_month.setText(date[1]);
             holder.doctor_view_title.setText(date[3]);
         }
     }
@@ -74,9 +77,9 @@ public class Consultation  extends FirestoreRecyclerAdapter<Fiche,Consultation.F
         TextView doctor_name;
         TextView type;
         Button btn;
-        TextView appointment_month;
-        TextView appointment_day;
-        TextView appointment_day_name;
+        TextView appointement_month;
+        TextView appointement_day;
+        TextView appointement_day_name;
         TextView doctor_view_title;
 
         public FicheHolder(View itemView) {
@@ -84,9 +87,9 @@ public class Consultation  extends FirestoreRecyclerAdapter<Fiche,Consultation.F
             doctor_name = itemView.findViewById(R.id.doctor_name);
             type = itemView.findViewById(R.id.text_view_description);
             btn = itemView.findViewById(R.id.voir_fiche_btn);
-            appointment_month = itemView.findViewById(R.id.appointment_month);
-            appointment_day = itemView.findViewById(R.id.appointment_day);
-            appointment_day_name = itemView.findViewById(R.id.appointment_day_name);
+            appointement_month = itemView.findViewById(R.id.appointement_month);
+            appointement_day = itemView.findViewById(R.id.appointement_day);
+            appointement_day_name = itemView.findViewById(R.id.appointement_day_name);
             doctor_view_title = itemView.findViewById(R.id.doctor_view_title);
         }
     }

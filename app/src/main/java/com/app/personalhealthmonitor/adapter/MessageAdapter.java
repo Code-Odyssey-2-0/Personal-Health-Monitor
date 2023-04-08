@@ -1,23 +1,25 @@
 package com.app.personalhealthmonitor.adapter;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.app.personalhealthmonitor.R;
-import com.app.personalhealthmonitor.model.Message;
+import com.ensias.healthcareapp.R;
+import com.ensias.healthcareapp.model.Message;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class Message extends FirestoreRecyclerAdapter<Message,Message.MessageHolder> {
+public class MessageAdapter extends FirestoreRecyclerAdapter<Message,MessageAdapter.MessageHolder> {
 
-    public Message(@NonNull FirestoreRecyclerOptions<Message> options) {
+    public MessageAdapter(@NonNull FirestoreRecyclerOptions<Message> options) {
         super(options);
     }
 
@@ -26,8 +28,8 @@ public class Message extends FirestoreRecyclerAdapter<Message,Message.MessageHol
         if(model.getUserSender().equals(getCurrentUser().getEmail()+"") ){
             //holder.text.setTextSize(20);
             //holder.text.setBackgroundColor(0xC0C0C0);
-            // CoordinatorLayout.LayoutParams  lllp= (CoordinatorLayout.LayoutParams) holder.text.getLayoutParams();
-            // lllp.gravity= Gravity.LEFT;
+           // CoordinatorLayout.LayoutParams  lllp= (CoordinatorLayout.LayoutParams) holder.text.getLayoutParams();
+           // lllp.gravity= Gravity.LEFT;
             //holder.text.setLayoutParams(lllp);
             //holder.text.setBackground(holder.text.getContext().getResources().getDrawable(R.drawable.rounded_message2));
             holder.text2.setText(model.getMessage());
