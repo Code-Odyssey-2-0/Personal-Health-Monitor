@@ -1,6 +1,5 @@
-package com.ensias.healthcareapp;
+package com.app.personalhealthmonitor;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import com.ensias.healthcareapp.adapter.ConfirmedAppointmentsAdapter;
@@ -17,10 +16,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ConfirmedAppointmensActivity extends AppCompatActivity {
+public class ConfirmedAppointmentsActivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference myDoctorsRef = db.collection("Doctor");
-    private ConfirmedAppointmentsAdapter adapter;
+    private ConfirmedAppointments adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +35,11 @@ public class ConfirmedAppointmensActivity extends AppCompatActivity {
         Query query = myDoctorsRef.document(""+doctorID+"")
                 .collection("calendar").orderBy("time", Query.Direction.DESCENDING);
 
-        FirestoreRecyclerOptions<ApointementInformation> options = new FirestoreRecyclerOptions.Builder<ApointementInformation>()
-                .setQuery(query, ApointementInformation.class)
+        FirestoreRecyclerOptions<AppointmentInfo> options = new FirestoreRecyclerOptions.Builder<AppointmentInfoAppointmentInfo>()
+                .setQuery(query, AppointmentInfo.class)
                 .build();
 
-        adapter = new ConfirmedAppointmentsAdapter(options);
+        adapter = new ConfirmedAppointments(options);
         //List current appointments
         RecyclerView recyclerView = findViewById(R.id.confirmed_appointements_list);
         recyclerView.setHasFixedSize(true);
