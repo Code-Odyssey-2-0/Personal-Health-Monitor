@@ -31,10 +31,6 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MyPatientsAdapter extends FirestoreRecyclerAdapter<Patient, MyPatientsAdapter.MyPatientsHolder> {
     StorageReference pathReference ;
 
-    /**
-     * Create a new RecyclerView adapter that listens to a Firestore Query.
-     * @param options
-     */
     public MyPatientsAdapter(@NonNull FirestoreRecyclerOptions<Patient> options) {
         super(options);
     }
@@ -65,7 +61,7 @@ public class MyPatientsAdapter extends FirestoreRecyclerAdapter<Patient, MyPatie
             }
         });
 
-        String imageId = patient.getEmail()+".jpg"; //add a title image
+        String imageId = patient.getEmail()+".jpg";
         pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/"+ imageId); //storage the image
         pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
@@ -75,14 +71,11 @@ public class MyPatientsAdapter extends FirestoreRecyclerAdapter<Patient, MyPatie
                         .placeholder(R.mipmap.ic_launcher)
                         .fit()
                         .centerCrop()
-                        .into(myPatientsHolder.imageViewPatient);//Image location
-
-                // profileImage.setImageURI(uri);
+                        .into(myPatientsHolder.imageViewPatient);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                // Handle any errors
             }
         });
 
@@ -115,7 +108,6 @@ public class MyPatientsAdapter extends FirestoreRecyclerAdapter<Patient, MyPatie
     }
 
     class MyPatientsHolder extends RecyclerView.ViewHolder{
-        //Here we hold the MyDoctorItems
         Button callBtn;
         TextView textViewTitle;
         TextView textViewTelephone;

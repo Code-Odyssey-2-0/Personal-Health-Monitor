@@ -28,10 +28,6 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MyDoctorsAdapter extends FirestoreRecyclerAdapter<Doctor, MyDoctorsAdapter.MyDoctorAppointementHolder> {
     StorageReference pathReference ;
 
-    /**
-     * Create a new RecyclerView adapter that listens to a Firestore Query.
-     * @param options
-     */
     public MyDoctorsAdapter(@NonNull FirestoreRecyclerOptions<Doctor> options) {
         super(options);
     }
@@ -39,7 +35,7 @@ public class MyDoctorsAdapter extends FirestoreRecyclerAdapter<Doctor, MyDoctors
     @Override
     protected void onBindViewHolder(@NonNull MyDoctorAppointementHolder myDoctorsHolder, int position, @NonNull final Doctor doctor) {
         myDoctorsHolder.textViewTitle.setText(doctor.getName());
-        myDoctorsHolder.textViewDescription.setText("Specialite : "+doctor.getSpecialite());
+        myDoctorsHolder.textViewDescription.setText("Speciality : "+doctor.getSpecialite());
         myDoctorsHolder.sendMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +50,7 @@ public class MyDoctorsAdapter extends FirestoreRecyclerAdapter<Doctor, MyDoctors
         });
 //
         String imageId = doctor.getEmail()+".jpg"; //add a title image
-        pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/"+ imageId); //storage the image
+        pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/"+ imageId);
         pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -63,14 +59,12 @@ public class MyDoctorsAdapter extends FirestoreRecyclerAdapter<Doctor, MyDoctors
                         .placeholder(R.mipmap.ic_launcher)
                         .fit()
                         .centerCrop()
-                        .into(myDoctorsHolder.imageViewDoctor);//Image location
+                        .into(myDoctorsHolder.imageViewDoctor);
 
-                // profileImage.setImageURI(uri);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                // Handle any errors
             }
         });
     }

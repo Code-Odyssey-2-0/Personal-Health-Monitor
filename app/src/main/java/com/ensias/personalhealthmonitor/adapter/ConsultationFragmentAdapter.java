@@ -8,25 +8,23 @@ import com.ensias.personalhealthmonitor.ConsultationFragmentPage;
 import com.ensias.personalhealthmonitor.Hospitalisation;
 
 public class ConsultationFragmentAdapter extends FragmentPagerAdapter {
-    // 1 - Array of colors that will be passed to PageFragment
     private int[] colors;
 
-    // 2 - Default Constructor
     public ConsultationFragmentAdapter(FragmentManager mgr) {
         super(mgr);
     }
 
     @Override
     public int getCount() {
-        return(2); // 3 - Number of page to show
+        return(2);
     }
 
     @Override
     public Fragment getItem(int position) {
         switch (position){
-            case 0: //Page number 1
+            case 0:
                 return ConsultationFragmentPage.newInstance();
-            case 1: //Page number 2
+            case 1:
                 return Hospitalisation.newInstance();
             default:
                 return null;

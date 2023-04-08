@@ -33,10 +33,7 @@ public class DoctorAppointementAdapter extends FirestoreRecyclerAdapter<Apointem
     StorageReference pathReference ;
 
 
-    /**
-     * Create a new RecyclerView adapter that listens to a Firestore Query.
-     * @param options
-     */
+
     public DoctorAppointementAdapter(@NonNull FirestoreRecyclerOptions<ApointementInformation> options) {
         super(options);
     }
@@ -56,7 +53,7 @@ public class DoctorAppointementAdapter extends FirestoreRecyclerAdapter<Apointem
                 FirebaseFirestore.getInstance().collection("Doctor").document(apointementInformation.getDoctorId()).collection("calendar")
                         .document(apointementInformation.getTime().replace("/","_")).set(apointementInformation);
 
-//////////// here add patient friend to doctor
+
 
                 FirebaseFirestore.getInstance().document("Patient/"+apointementInformation.getPatientId()).get()
                         .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -90,8 +87,8 @@ public class DoctorAppointementAdapter extends FirestoreRecyclerAdapter<Apointem
             }
         });
 
-        String imageId = apointementInformation.getPatientId()+".jpg"; //add a title image
-        pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/"+ imageId); //storage the image
+        String imageId = apointementInformation.getPatientId()+".jpg";
+        pathReference = FirebaseStorage.getInstance().getReference().child("DoctorProfile/"+ imageId);
         pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -100,14 +97,14 @@ public class DoctorAppointementAdapter extends FirestoreRecyclerAdapter<Apointem
                         .placeholder(R.mipmap.ic_launcher)
                         .fit()
                         .centerCrop()
-                        .into(myDoctorAppointementHolder.patient_image);//Image location
+                        .into(myDoctorAppointementHolder.patient_image);
 
-                // profileImage.setImageURI(uri);
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                // Handle any errors
+
             }
         });
 

@@ -46,15 +46,15 @@ public class PatientAppointmentsAdapter extends FirestoreRecyclerAdapter<Apointe
         patientAppointmentsHolder.appointementType.setText(apointementInformation.getApointementType());
         patientAppointmentsHolder.type.setText(apointementInformation.getType());
         String doctorEmail = apointementInformation.getDoctorId();
-        Log.d("docotr email", doctorEmail);
+        Log.d("Doctor's email", doctorEmail);
         docRef = db.collection("Doctor").document("" + doctorEmail + "");
         /* Get the doctor's phone number */
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 DocumentSnapshot document = task.getResult();
-                patientAppointmentsHolder.phone.setText(document.getString("tel"));
-                Log.d("telephone num", document.getString("tel"));
+                patientAppointmentsHolder.phone.setText(document.getString("Telephone"));
+                Log.d("Telephone number", document.getString("Telephone"));
             }
         });
 
@@ -71,12 +71,11 @@ public class PatientAppointmentsAdapter extends FirestoreRecyclerAdapter<Apointe
                         .fit()
                         .centerCrop()
                         .into(patientAppointmentsHolder.image);
-                // profileImage.setImageURI(uri);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                // Handle any errors
+
             }
         });
 
