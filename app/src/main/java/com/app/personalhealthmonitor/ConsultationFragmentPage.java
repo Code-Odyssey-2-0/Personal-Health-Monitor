@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.app.personalhealthmonitor.adapter.ConsultationAdapter;
+import com.app.personalhealthmonitor.model.Fiche;
 import com.ensias.healthcareapp.adapter.ConsultationAdapter;
 import com.ensias.healthcareapp.model.Fiche;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
