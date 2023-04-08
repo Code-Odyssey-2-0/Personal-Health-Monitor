@@ -1,4 +1,4 @@
-package com.ensias.healthcareapp.model;
+package com.app.personalhealthmonitor.model;
 
 public class ApointementInformation {
     private  String patientName,time,doctorId,doctorName,patientId,type,apointementType,chemin;
