@@ -1,4 +1,4 @@
-package com.ensias.healthcareapp;
+package com.app.personalhealthmonitor;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
