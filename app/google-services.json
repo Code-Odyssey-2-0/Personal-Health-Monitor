@@ -1,33 +1,62 @@
 {
   "project_info": {
-    "project_number": "591162435289",
-    "project_id": "healthcare-ee37b",
-    "storage_bucket": "healthcare-ee37b.appspot.com"
+    "project_number": "90074484975",
+    "project_id": "personal-health-monitor-c5169",
+    "storage_bucket": "personal-health-monitor-c5169.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:591162435289:android:937519c74de7cb6df140c8",
+        "mobilesdk_app_id": "1:90074484975:android:0b2eab35ddb67ff5bb8b1a",
         "android_client_info": {
           "package_name": "com.ensias.healthcareapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "591162435289-krjva8hcn8d6ng3obeq13fcu35d20nta.apps.googleusercontent.com",
+          "client_id": "90074484975-ob8q2rv8ki9llgiggl74f7gi6trj8phu.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCOvUBLNWIKNGeFo_m3IIFn3FmeMcaZkBw"
+          "current_key": "AIzaSyCSlAKkStOethMYOmNaHFfr3Iw3TT8Pk6s"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "591162435289-krjva8hcn8d6ng3obeq13fcu35d20nta.apps.googleusercontent.com",
+              "client_id": "90074484975-ob8q2rv8ki9llgiggl74f7gi6trj8phu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90074484975:android:e15caa0b3ca93a4dbb8b1a",
+        "android_client_info": {
+          "package_name": "com.app.personalhealthmonitor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "90074484975-ob8q2rv8ki9llgiggl74f7gi6trj8phu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSlAKkStOethMYOmNaHFfr3Iw3TT8Pk6s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "90074484975-ob8q2rv8ki9llgiggl74f7gi6trj8phu.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
