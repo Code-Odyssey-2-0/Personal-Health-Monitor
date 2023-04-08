@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.app.personalhealthmonitor.Common.Common;
-import com.app.personalhealthmonitor.Common.NonSwipeViewPager;
+import com.app.personalhealthmonitor.Common.NonSwipeViewPage;
 import com.app.personalhealthmonitor.adapter.MyViewPagerAdapter;
 import com.shuhart.stepview.StepView;
 
@@ -30,7 +30,7 @@ import static com.app.personalhealthmonitor.fragment.BookingStep1Fragment.spinne
 public class TestActivity extends AppCompatActivity {
 
     StepView stepView;
-    NonSwipeViewPager viewPager;
+    NonSwipeViewPage viewPager;
     Button btn_previous_step;
     Button btn_next_step;
     Unbinder unbinder;
@@ -99,14 +99,14 @@ public class TestActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(step < 3 || step == 0 ){
                     step++ ;
-                    Common.Currentaappointementatype=spinner.getSelectedItem().toString();
-                    Log.e("Spinnr", Common.Currentaappointementatype);
+                    Common.CurrentAppointmentType=spinner.getSelectedItem().toString();
+                    Log.e("Spinnr", Common.CurrentAppointmentType);
 
                     if(step==1){
-                        if(Common.CurreentDoctor != null) {
+                        if(Common.CurrentDoctor != null) {
                             Common.currentTimeSlot = -1;
                             Common.currentDate = Calendar.getInstance();
-                            loadTimeSlotOfDoctor(Common.CurreentDoctor);
+                            loadTimeSlotOfDoctor(Common.CurrentDoctor);
                         }
                     }
                     else if(step == 2){
