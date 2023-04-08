@@ -14,7 +14,6 @@ import com.ensias.healthcareapp.adapter.ConsultationAdapter;
 import com.ensias.healthcareapp.adapter.HospitalisationAdapter;
 import com.ensias.healthcareapp.model.Fiche;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;

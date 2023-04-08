@@ -1,6 +1,5 @@
 package com.ensias.healthcareapp;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;

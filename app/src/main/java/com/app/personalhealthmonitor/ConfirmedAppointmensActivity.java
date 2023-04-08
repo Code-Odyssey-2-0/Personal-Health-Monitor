@@ -1,6 +1,5 @@
 package com.ensias.healthcareapp;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import com.ensias.healthcareapp.adapter.ConfirmedAppointmentsAdapter;
