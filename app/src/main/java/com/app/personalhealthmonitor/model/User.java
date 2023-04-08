@@ -1,26 +1,30 @@
-package com.app.personalhealthmonitor.Model;
+package com.app.personalhealthmonitor.model;
 
-
-public class Patient {
+public class User {
     private String name;
     private String address;
     private String tel;
     private String email;
-    private String dateInsurance;
-    private String situation;
+    private String type;
 
-
-    public Patient(){
-        //needed for firebase
+    public User(){
+        //need firebase
     }
 
-    public Patient(String name, String address, String tel, String email, String dateInsurance, String situation) {
+    public User(String name, String address, String tel, String email, String type) {
         this.name = name;
         this.address = address;
         this.tel = tel;
         this.email = email;
-        this.dateInsurance = dateInsurance;
-        this.situation = situation;
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getName() {
@@ -53,21 +57,5 @@ public class Patient {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getDateInsurance() {
-        return dateInsurance;
-    }
-
-    public void setDateInsurance(String dateInsurance) {
-        this.dateInsurance = dateInsurance;
-    }
-
-    public String getSituation() {
-        return situation;
-    }
-
-    public void setSituation(String situation) {
-        this.situation = situation;
     }
 }
