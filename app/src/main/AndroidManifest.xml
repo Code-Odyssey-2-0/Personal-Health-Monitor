@@ -14,10 +14,70 @@
         android:theme="@style/Theme.PersonalHealthMonitor"
         tools:targetApi="31">
         <activity
+            android:name=".AppointementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SearchPatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfilePatientActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileDoctorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PatientRequestPage"
+            android:exported="false" />
+        <activity
+            android:name=".PatientInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PatientAppointementsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyPatientsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyCalendarDoctorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyDoctorsAvtivity"
+            android:exported="false" />
+        <activity
+            android:name=".Hospitalisation"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FicheInfo"
+            android:exported="false" />
+        <activity
             android:name=".FicheActivity"
             android:exported="false"
             android:label="@string/title_activity_fiche"
             android:theme="@style/Theme.PersonalHealthMonitor.NoActionBar" />
+        <activity
+            android:name=".EditProfilePatientActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfileDoctorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DossierMedical"
+            android:exported="false" />
+        <activity
+            android:name=".DoctorHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DoctorAppointementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatActivity"
+            android:exported="false" />
         <activity
             android:name=".ConsultationFragmentPage"
             android:exported="false" />

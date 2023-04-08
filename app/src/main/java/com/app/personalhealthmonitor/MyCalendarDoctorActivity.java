@@ -1,17 +1,19 @@
-package com.ensias.healthcareapp;
+package com.app.personalhealthmonitor;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.os.Binder;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.ensias.healthcareapp.Common.Common;
-import com.ensias.healthcareapp.Interface.ITimeSlotLoadListener;
-import com.ensias.healthcareapp.adapter.MyTimeSlotAdapter;
-import com.ensias.healthcareapp.model.TimeSlot;
+import com.app.personalhealthmonitor.Common.Common;
+import com.app.personalhealthmonitor.Interface.ITimeSlotLoadListener;
+import com.app.personalhealthmonitor.adapter.MyTimeSlotAdapter;
+import com.app.personalhealthmonitor.model.TimeSlot;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -26,6 +28,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.logging.Formatter;
+import java.util.logging.SimpleFormatter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -160,4 +164,3 @@ public class MyCalendarDoctorActivity extends AppCompatActivity implements ITime
         alertDialog.dismiss();
     }
 }
-y
