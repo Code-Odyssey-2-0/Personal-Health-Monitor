@@ -38,7 +38,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:90074484975:android:e15caa0b3ca93a4dbb8b1a",
         "android_client_info": {
-          "package_name": "com.ensias.healthcareapp"
+          "package_name": "com.app.personalhealthmonitor"
         }
       },
       "oauth_client": [

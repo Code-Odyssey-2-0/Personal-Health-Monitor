@@ -32,7 +32,9 @@
         app:sv_selectedTextColor="@color/colorPrimary"
         app:sv_stepPadding="12dp" />
 
-    <com.ensias.healthcareapp.Common.NonSwipeViewPager
+    <com.app.personalhealthmonitor.Common.NonSwipeViewPage
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
     android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
