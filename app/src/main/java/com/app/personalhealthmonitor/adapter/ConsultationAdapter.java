@@ -11,11 +11,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ensias.healthcareapp.ChatActivity;
-import com.ensias.healthcareapp.FicheInfo;
-import com.ensias.healthcareapp.R;
-import com.ensias.healthcareapp.model.Doctor;
-import com.ensias.healthcareapp.model.Fiche;
+import com.app.personalhealthmonitor.ChatActivity;
+import com.app.personalhealthmonitor.FicheInfo;
+import com.app.personalhealthmonitor.R;
+import com.app.personalhealthmonitor.model.Doctor;
+import com.app.personalhealthmonitor.model.Fiche;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;

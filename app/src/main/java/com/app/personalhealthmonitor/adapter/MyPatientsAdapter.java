@@ -11,12 +11,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.ensias.healthcareapp.ChatActivity;
-import com.ensias.healthcareapp.DossierMedical;
-import com.ensias.healthcareapp.FicheInfo;
-import com.ensias.healthcareapp.R;
-import com.ensias.healthcareapp.model.Fiche;
-import com.ensias.healthcareapp.model.Patient;
+import com.app.personalhealthmonitor.ChatActivity;
+import com.app.personalhealthmonitor.DossierMedical;
+import com.app.personalhealthmonitor.FicheInfo;
+import com.app.personalhealthmonitor.R;
+import com.app.personalhealthmonitor.model.Fiche;
+import com.app.personalhealthmonitor.model.Patient;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;

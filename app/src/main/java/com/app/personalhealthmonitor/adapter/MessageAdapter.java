@@ -10,8 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ensias.healthcareapp.R;
-import com.ensias.healthcareapp.model.Message;
+import com.app.personalhealthmonitor.R;
+import com.app.personalhealthmonitor.model.Message;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
