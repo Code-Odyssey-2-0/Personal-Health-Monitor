@@ -1,26 +1,25 @@
 package com.app.personalhealthmonitor.model;
 
-
 public class Patient {
     private String name;
-    private String address;
+    private String adresse;
     private String tel;
     private String email;
-    private String dateInsurance;
-    private String situation;
+    private String dateNaissance;
+    private String situationFamiliale;
 
 
     public Patient(){
         //needed for firebase
     }
 
-    public Patient(String name, String address, String tel, String email, String dateInsurance, String situation) {
+    public Patient(String name, String adresse, String tel, String email, String dateNaissance, String situationFamiliale) {
         this.name = name;
-        this.address = address;
+        this.adresse = adresse;
         this.tel = tel;
         this.email = email;
-        this.dateInsurance = dateInsurance;
-        this.situation = situation;
+        this.dateNaissance = dateNaissance;
+        this.situationFamiliale = situationFamiliale;
     }
 
     public String getName() {
@@ -31,12 +30,12 @@ public class Patient {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAdresse() {
+        return adresse;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
 
     public String getTel() {
@@ -55,19 +54,19 @@ public class Patient {
         this.email = email;
     }
 
-    public String getDateInsurance() {
-        return dateInsurance;
+    public String getDateNaissance() {
+        return dateNaissance;
     }
 
-    public void setDateInsurance(String dateInsurance) {
-        this.dateInsurance = dateInsurance;
+    public void setDateNaissance(String dateNaissance) {
+        this.dateNaissance = dateNaissance;
     }
 
-    public String getSituation() {
-        return situation;
+    public String getSituationFamiliale() {
+        return situationFamiliale;
     }
 
-    public void setSituation(String situation) {
-        this.situation = situation;
+    public void setSituationFamiliale(String situationFamiliale) {
+        this.situationFamiliale = situationFamiliale;
     }
 }

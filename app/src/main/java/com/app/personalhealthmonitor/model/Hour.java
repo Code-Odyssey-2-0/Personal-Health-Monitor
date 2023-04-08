@@ -2,7 +2,7 @@ package com.app.personalhealthmonitor.model;
 
 public class Hour {
     private String patient;
-    private String chosen;
+    private String choosen;
     private String patientName;
 
     public String getPatientName() {
@@ -15,7 +15,7 @@ public class Hour {
 
     public Hour(String patient) {
         this.patient = patient;
-        chosen = "false";
+        choosen = "false";
     }
     public Hour(){
 
@@ -28,11 +28,11 @@ public class Hour {
         this.patient = patient;
     }
 
-    public String getChosen() {
-        return chosen;
+    public String getChoosen() {
+        return choosen;
     }
 
-    public void setChosen(String chosen) {
-        this.chosen = chosen;
+    public void setChoosen(String choosen) {
+        this.choosen = choosen;
     }
 }

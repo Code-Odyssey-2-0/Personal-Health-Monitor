@@ -1,23 +1,23 @@
-package com.app.personalhealthmonitor.model;
+package com.ensias.healthcareapp.model;
 
-public class AppointmentInfo {
-    private  String patientName,time,doctorId,doctorName,patientId,type,appointmentType,min;
+public class ApointementInformation {
+    private  String patientName,time,doctorId,doctorName,patientId,type,apointementType,chemin;
     private long slot;
 
-    public String getAppointmentType() {
-        return appointmentType;
+    public String getApointementType() {
+        return apointementType;
     }
 
-    public void setAppointmentType(String appointmentType) {
-        this.appointmentType = appointmentType;
+    public void setApointementType(String apointementType) {
+        this.apointementType = apointementType;
     }
 
-    public String getMin() {
-        return min;
+    public String getChemin() {
+        return chemin;
     }
 
-    public void setMin(String min) {
-        this.min = min;
+    public void setChemin(String chemin) {
+        this.chemin = chemin;
     }
 
     public String getType() {
@@ -36,10 +36,10 @@ public class AppointmentInfo {
         this.patientId = patientId;
     }
 
-    public AppointmentInfo(){
+    public ApointementInformation(){
     }
 
-    public AppointmentInfo(String patientName, String time, String doctorId, String doctorName, long slot) {
+    public ApointementInformation(String patientName, String time, String doctorId, String doctorName, long slot) {
         this.patientName = patientName;
         this.time = time;
         this.doctorId = doctorId;
