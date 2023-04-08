@@ -1,4 +1,5 @@
 package com.app.personalhealthmonitor.model;
+
 import com.google.firebase.firestore.ServerTimestamp;
 
 import java.util.Date;
@@ -6,7 +7,7 @@ import java.util.Date;
 public class Fiche {
     private String maladie;
     private String description;
-    private String treatment;
+    private String traitement;
     private String type;
     private Date dateCreated;
     private String doctor;
@@ -18,7 +19,7 @@ public class Fiche {
     public Fiche(String maladie, String description, String traitement, String type, String doctor) {
         this.maladie = maladie;
         this.description = description;
-        this.treatment = traitement;
+        this.traitement = traitement;
         this.type = type;
         this.doctor = doctor;
     }
@@ -39,12 +40,12 @@ public class Fiche {
         this.description = description;
     }
 
-    public String getTreatment() {
-        return treatment;
+    public String getTraitement() {
+        return traitement;
     }
 
-    public void setTreatment(String treatment) {
-        this.treatment = treatment;
+    public void setTraitement(String traitement) {
+        this.traitement = traitement;
     }
 
     public String getType() {
@@ -70,3 +71,4 @@ public class Fiche {
         this.doctor = doctor;
     }
 }
+
