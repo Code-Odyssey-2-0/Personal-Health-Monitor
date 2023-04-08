@@ -11,12 +11,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.app.personalhealthmonitor.ChatActivity;
-import com.app.personalhealthmonitor.DossierMedical;
-import com.app.personalhealthmonitor.FicheInfo;
-import com.app.personalhealthmonitor.R;
-import com.app.personalhealthmonitor.model.Fiche;
-import com.app.personalhealthmonitor.model.Patient;
+import com.ensias.healthcareapp.ChatActivity;
+import com.ensias.healthcareapp.DossierMedical;
+import com.ensias.healthcareapp.FicheInfo;
+import com.ensias.healthcareapp.R;
+import com.ensias.healthcareapp.model.Fiche;
+import com.ensias.healthcareapp.model.Patient;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,14 +30,14 @@ import com.squareup.picasso.Picasso;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyPatients extends FirestoreRecyclerAdapter<Patient, MyPatients.MyPatientsHolder> {
+public class MyPatientsAdapter extends FirestoreRecyclerAdapter<Patient, MyPatientsAdapter.MyPatientsHolder> {
     StorageReference pathReference ;
 
     /**
      * Create a new RecyclerView adapter that listens to a Firestore Query.
      * @param options
      */
-    public MyPatients(@NonNull FirestoreRecyclerOptions<Patient> options) {
+    public MyPatientsAdapter(@NonNull FirestoreRecyclerOptions<Patient> options) {
         super(options);
     }
 
