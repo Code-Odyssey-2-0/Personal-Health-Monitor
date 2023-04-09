@@ -113,8 +113,8 @@ public class MyTimeSlotAdapter extends RecyclerView.Adapter<MyTimeSlotAdapter.My
                     localBroadcastManager.sendBroadcast(intent);
                     if(Common.CurrentUserType == "doctor" && holder.txt_time_slot_description.getText().equals("Available")){
                         AlertDialog.Builder alert = new AlertDialog.Builder(holder.card_time_slot.getContext());
-                        alert.setTitle("Block");
-                        alert.setMessage("Are you sure you want to block?");
+                        alert.setTitle("Lock");
+                        alert.setMessage("Are you sure you want to lock?");
                         alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
