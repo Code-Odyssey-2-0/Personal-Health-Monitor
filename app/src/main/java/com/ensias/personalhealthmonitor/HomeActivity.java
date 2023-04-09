@@ -51,14 +51,14 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        myDoctors = (Button)findViewById(R.id.myDoctors);
-        myDoctors.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent k = new Intent(HomeActivity.this, MyDoctorsAvtivity.class);
-                startActivity(k);
-            }
-        });
+//        myDoctors = (Button)findViewById(R.id.myDoctors);
+//        myDoctors.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent k = new Intent(HomeActivity.this, MyDoctorsAvtivity.class);
+//                startActivity(k);
+//            }
+//        });
         BtnRequst = findViewById(R.id.btnRequst);
         BtnRequst.setOnClickListener(new View.OnClickListener() {
             @Override
