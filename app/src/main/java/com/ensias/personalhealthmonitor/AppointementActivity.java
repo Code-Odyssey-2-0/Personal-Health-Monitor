@@ -30,7 +30,6 @@ public class AppointementActivity extends AppCompatActivity {
         String day = getIntent().getStringExtra("key2");
         final CollectionReference addRequest = db.collection("Doctor").document(patient_email).collection("calendar").document(day).collection("hour");
 
-
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(140, 398);
         layoutParams.setMargins(200, 0, 300, 0);
 

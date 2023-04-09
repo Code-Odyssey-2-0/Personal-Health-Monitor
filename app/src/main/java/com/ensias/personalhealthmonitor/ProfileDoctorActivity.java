@@ -84,11 +84,12 @@ public class ProfileDoctorActivity extends AppCompatActivity {
         docRef.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                doctorName.setText(documentSnapshot.getString("Name"));
-                doctorSpe.setText(documentSnapshot.getString("Speciality"));
-                doctorPhone.setText(documentSnapshot.getString("Telephone"));
-                doctorEmail.setText(documentSnapshot.getString("Email"));
-                doctorAddress.setText(documentSnapshot.getString("Address"));
+                System.out.println("Profile details "+documentSnapshot);
+                doctorName.setText(documentSnapshot.getString("name"));
+                doctorSpe.setText(documentSnapshot.getString("speciality"));
+                doctorPhone.setText(documentSnapshot.getString("tel"));
+                doctorEmail.setText(documentSnapshot.getString("email"));
+                doctorAddress.setText(documentSnapshot.getString("adresse"));
             }
         });
 
