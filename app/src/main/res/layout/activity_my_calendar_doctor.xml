@@ -14,7 +14,7 @@
         android:text="My Calendar"
         android:gravity="center"
         android:textSize="@dimen/default_title_size"
-        android:fontFamily="@font/amita"
+        android:fontFamily="@font/courgette"
         android:background="#00BFA5"/>
     <devs.mulham.horizontalcalendar.HorizontalCalendarView
         android:id="@+id/calendarView2"
