@@ -17,7 +17,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
+//import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private Button creatBtn;
     private EditText secondPass;
     private EditText confirme;
-    SignInButton signInButton;
+//    SignInButton signInButton;
     FirebaseFirestore  db = FirebaseFirestore.getInstance();
     private CollectionReference UsersRef = db.collection("User");
 
@@ -50,11 +50,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-       mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//                .requestIdToken(getString(R.string.default_web_client_id))
+//                .requestEmail()
+//                .build();
+//       mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -63,10 +63,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         confirme = (EditText)findViewById(R.id.editText3);
         confirme.setVisibility(View.INVISIBLE);
-        signInButton = findViewById(R.id.sign_in_button);
-
-        TextView textView = (TextView) signInButton.getChildAt(0);
-        textView.setText("Or Sign in with Google");
 
         emailText= (EditText) findViewById(R.id.editText2);
         passwordText= (EditText) findViewById(R.id.editText);
@@ -155,23 +151,13 @@ public class MainActivity extends AppCompatActivity {
                     signUpBtn.setVisibility(View.VISIBLE);
                     loginBtn.setVisibility(View.INVISIBLE);
                     creatBtn.setText("Back to login");
-                    signInButton.setVisibility(View.GONE);
                 }
                 else{
                     confirme.setVisibility(View.INVISIBLE);
                     signUpBtn.setVisibility(View.INVISIBLE);
                     loginBtn.setVisibility(View.VISIBLE);
                     creatBtn.setText("Create Account");
-                    signInButton.setVisibility(View.VISIBLE);
                 }
-            }
-        });
-
-        findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-                startActivityForResult(signInIntent,RC_SIGN_IN);
             }
         });
 
