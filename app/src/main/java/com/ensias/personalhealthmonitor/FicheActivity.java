@@ -63,6 +63,7 @@ public class FicheActivity extends AppCompatActivity implements AdapterView.OnIt
     }
 
     private void addFiche(){
+        System.out.println(maladie+" "+description+" "+traitement+" "+ficheType);
         String maladieFiche = maladie.getText().toString();
         String descriptionFiche =  description.getText().toString();
         String traitemenfiche = traitement.getText().toString();
