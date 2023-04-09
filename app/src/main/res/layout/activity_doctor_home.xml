@@ -20,40 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_person" />
 
-    <Button
-        android:id="@+id/myCalendarBtn"
-        android:layout_width="118dp"
-        android:layout_height="107dp"
-        android:background="@drawable/button_home"
-        android:fontFamily="@font/roboto"
-        android:gravity="bottom|center"
-        android:paddingBottom="8dp"
-        android:text="My Calendar"
-        android:textAllCaps="false"
-        android:textColor="#22BE87"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/signOutBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.854" />
-
-    <Button
-        android:id="@+id/signOutBtn"
-        android:layout_width="154dp"
-        android:layout_height="23dp"
-        android:layout_marginBottom="4dp"
-        android:background="#C62828"
-        android:text="SignOut"
-        android:textColor="#ffff"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
-
-<!--    <Button-->
+    <!--    <Button-->
 <!--        android:id="@+id/btnRequst"-->
 <!--        android:layout_width="118dp"-->
 <!--        android:layout_height="107dp"-->
@@ -96,8 +63,40 @@
 <!--        app:layout_constraintVertical_bias="0.0" />-->
 
     <Button
+        android:id="@+id/myCalendarBtn"
+        android:layout_width="260dp"
+        android:layout_height="107dp"
+        android:background="@drawable/button_home"
+        android:fontFamily="@font/roboto"
+        android:gravity="bottom|center"
+        android:paddingBottom="8dp"
+        android:text="My Calendar"
+        android:textAllCaps="false"
+        android:textColor="#22BE87"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/signOutBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.931" />
+
+    <Button
+        android:id="@+id/signOutBtn"
+        android:layout_width="211dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/button_danger"
+        android:text="Logout"
+        android:textColor="#C62828"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
         android:id="@+id/listPatients"
-        android:layout_width="118dp"
+        android:layout_width="260dp"
         android:layout_height="107dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/button_home"
@@ -117,7 +116,7 @@
 
     <Button
         android:id="@+id/profile"
-        android:layout_width="118dp"
+        android:layout_width="260dp"
         android:layout_height="107dp"
         android:layout_marginTop="168dp"
         android:background="@drawable/button_home"
@@ -189,7 +188,7 @@
                 android:layout_marginStart="105dp"
                 android:layout_marginLeft="105dp"
                 android:layout_marginBottom="55dp"
-                android:text="How we can help you oday?"
+                android:text="How we can help you today?"
                 android:textColor="#ffffff"
                 android:textSize="16sp" />
 

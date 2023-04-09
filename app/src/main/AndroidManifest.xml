@@ -8,12 +8,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name="com.ensias.personalhealthmonitor.MyCalendarDoctorActivity"></activity>
+        <activity android:name="com.ensias.personalhealthmonitor.MyCalendarDoctorActivity"/>
         <activity android:name="com.ensias.personalhealthmonitor.TestActivity" />
         <activity android:name="com.ensias.personalhealthmonitor.AppointementActivity" />
         <activity android:name="com.ensias.personalhealthmonitor.FicheInfo" />
